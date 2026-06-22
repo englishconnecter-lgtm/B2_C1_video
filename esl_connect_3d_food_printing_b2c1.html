@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ESL CONNECT | 3D Food Printing</title><style>
+:root{--blue:#0b2f5b;--blue2:#114f95;--yellow:#f4d547;--bg:#f4f7fb;--text:#1e2a38;--muted:#5f7085;--line:#d8e0ea;--good:#1b8f3d;--bad:#c43d34}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrapper{max-width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;gap:18px;align-items:center}.logo{width:84px;height:84px;background:#fff;color:var(--blue);border:3px solid #fff5b7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;line-height:1.05;text-decoration:none;flex:0 0 auto}header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;background:#eaf0f8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav button{border:none;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700}nav button.active,nav button:hover{background:var(--yellow);color:#18263a}
+.page{display:none;padding:24px}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}@media(max-width:900px){.grid,.dragArea,.role{grid-template-columns:1fr!important}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 3px 12px rgba(15,47,106,.06)}.card h2,.card h3{margin-top:0;color:var(--blue)}.small{color:var(--muted);font-size:14px}
+.heroImg,.videoImg{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.08)}.heroImg{height:330px;object-fit:cover}.video-thumb{text-decoration:none;color:inherit}.video-meta{padding:12px 0}.btn{display:inline-block;margin-top:10px;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700;border:none;cursor:pointer}.btn:hover{background:var(--yellow);color:#18263a}
+.reveal{border:1px solid var(--line);border-radius:12px;padding:15px;margin:14px 0;background:#fff;cursor:pointer}.reveal:hover{background:#f8fbff}.reveal .answer{display:none;margin-top:10px;padding:12px;border-left:4px solid var(--yellow);background:#fffbe6;border-radius:8px}.reveal.open .answer{display:block}.reveal strong{color:var(--blue)}
+.dragArea{display:grid;grid-template-columns:1fr 300px;gap:18px}.dropzone{display:inline-block;min-width:150px;min-height:34px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:5px 10px;vertical-align:middle}.dropzone.filled{border-style:solid;background:#eef6ff;font-weight:700}.dropzone.correct{border-color:#167a46;background:#f0fdf4;color:#14532d}.dropzone.incorrect{border-color:#b91c1c;background:#fef2f2;color:#7f1d1d}.matchDrop{display:block;min-height:42px;margin-top:8px}.matchSentence{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.matchSentence strong{color:var(--blue)}
+.draggable{background:#e8f0fb;border:1px solid #c7d7ee;border-radius:999px;padding:8px 11px;font-weight:700;color:#0b2f5b;cursor:grab;display:inline-block;margin:5px}.dragBank{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px}.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.table th{background:#eef4fb}.role{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:16px}.prompt{background:#f0f7ff;border:1px solid #cce1ff;border-radius:10px;padding:14px;margin:12px 0}.checkline{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.checkline input{width:100%;padding:10px;border:1px solid #c8d5e6;border-radius:8px;margin-top:8px}.result{font-weight:700;margin-top:8px;min-height:22px}.correctText{color:var(--good)}.incorrectText{color:var(--bad)}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.controls button{border:none;background:var(--blue2);color:#fff;padding:11px 16px;border-radius:8px;cursor:pointer}.controls button:hover{background:var(--yellow);color:#18263a}footer{padding:18px 24px 28px;color:var(--muted);text-align:center}
+</style></head>
+<body><div class="wrapper"><header><a class="logo" href="https://www.eslconnect.net/" target="_blank">ESL<br>CONNECT</a><div><h1>3D Food Printing: The Future of Cooking?</h1><p>B2/C1 video lesson on food technology, software-controlled cooking and innovation.</p><p class="small"><a style="color:#fff2a8" href="https://www.youtube.com/watch?v=5IpqV15frb4" target="_blank">Open video on YouTube</a></p></div></header><nav id="nav"></nav>
+
+<section class="page active" data-title="Start">
+<div class="grid">
+<div class="card"><h2>Lesson Overview</h2><p>Students watch a video about 3D food printing, software-controlled cooking and laser cooking. The lesson explores how digital tools could change food design, textures, ingredients and the future of cooking.</p>
+<h3>Before you watch</h3><ol><li>Would you eat food made by a 3D printer?</li><li>What problems could digital cooking solve?</li><li>Is food printing a gimmick or a serious innovation?</li></ol></div>
+<div class="card"><h2>Video</h2><img class="heroImg" src="https://img.youtube.com/vi/5IpqV15frb4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5IpqV15frb4/hqdefault.jpg';" alt="YouTube screen grab"><p><a class="btn" href="https://www.youtube.com/watch?v=5IpqV15frb4" target="_blank">Open video on YouTube</a></p></div>
+</div><div class="controls"><span></span><button onclick="nextPage()">Next</button></div></section>
+
+<section class="page" data-title="Prep Part 1">
+<div class="card">
+<h2>Prep Part 1</h2>
+<p class="small">Drag the correct sentence ending into each gap.</p>
+<div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If a printer deposits ingredients,... <span class="dropzone matchDrop" data-ans="it places small amounts of food material in a controlled way."></span></div><div class="matchSentence"><strong>2.</strong> If something is controlled by software,... <span class="dropzone matchDrop" data-ans="a computer program decides how the process works."></span></div><div class="matchSentence"><strong>3.</strong> If the sky is the limit,... <span class="dropzone matchDrop" data-ans="there are almost no limits to what is possible."></span></div><div class="matchSentence"><strong>4.</strong> If food has a new texture,... <span class="dropzone matchDrop" data-ans="it feels different in the mouth."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">a computer program decides how the process works.</span><span class="draggable" draggable="true">it feels different in the mouth.</span><span class="draggable" draggable="true">there are almost no limits to what is possible.</span><span class="draggable" draggable="true">it places small amounts of food material in a controlled way.</span></div></div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Watch Part 1">
+<div class="card">
+<h2>Watch Part 1</h2>
+<p>Watch from 0:00 to about 1:35. Focus on how the printer deposits ingredients, uses lasers and controls the cooking process with software.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=5IpqV15frb4" target="_blank">
+<img class="videoImg" src="https://img.youtube.com/vi/5IpqV15frb4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5IpqV15frb4/hqdefault.jpg';" alt="YouTube screen grab">
+<div class="video-meta"><strong>Watch Part 1:</strong> Watch this part on YouTube.</div>
+</a>
+<a class="btn" href="https://www.youtube.com/watch?v=5IpqV15frb4" target="_blank">Open video</a>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 1">
+<div class="card"><h2>Comprehension 1</h2><p class="small">Click each question to reveal the answer.</p><div class="reveal"><strong>How does the food printer cook the ingredients?</strong><div class="answer">It deposits ingredients in fine patterns and cooks them at the same time with lasers.</div></div><div class="reveal"><strong>What controls the cooking process?</strong><div class="answer">The cooking process is controlled by software.</div></div><div class="reveal"><strong>Why does the speaker say the sky is the limit?</strong><div class="answer">Because software control makes it possible to create new textures and food forms that were impossible before.</div></div><div class="reveal"><strong>What example of a raw ingredient does the speaker mention?</strong><div class="answer">He mentions salmon, which can be pulverised into a paste.</div></div><div class="reveal"><strong>What does the printer do with cartridges?</strong><div class="answer">It moves the cartridges around and deposits the ingredients at high resolution.</div></div></div>
+<div class='card'><h3>Vocabulary from Part 1</h3><div class='dragArea'><div><p>The machine deposits food <span class='dropzone' data-ans='ingredients'></span>.</p><p>It cooks the food with <span class='dropzone' data-ans='lasers'></span>.</p><p>The process is controlled by <span class='dropzone' data-ans='software'></span>.</p><p>The technology can create new food <span class='dropzone' data-ans='textures'></span>.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">ingredients</span><span class="draggable" draggable="true">lasers</span><span class="draggable" draggable="true">software</span><span class="draggable" draggable="true">textures</span><span class="draggable" draggable="true">patterns</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Prep Part 2">
+<div class="card">
+<h2>Prep Part 2</h2>
+<p class="small">Drag the correct sentence ending into each gap.</p>
+<div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If an ingredient is pulverised,... <span class="dropzone matchDrop" data-ans="it is crushed or blended into tiny pieces or paste."></span></div><div class="matchSentence"><strong>2.</strong> If a process has high resolution,... <span class="dropzone matchDrop" data-ans="it can create very small and precise details."></span></div><div class="matchSentence"><strong>3.</strong> If something is uncharted,... <span class="dropzone matchDrop" data-ans="it is new, unexplored or not well understood."></span></div><div class="matchSentence"><strong>4.</strong> If technology is democratised,... <span class="dropzone matchDrop" data-ans="ordinary people can access and use it."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">it can create very small and precise details.</span><span class="draggable" draggable="true">ordinary people can access and use it.</span><span class="draggable" draggable="true">it is new, unexplored or not well understood.</span><span class="draggable" draggable="true">it is crushed or blended into tiny pieces or paste.</span></div></div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Watch Part 2">
+<div class="card">
+<h2>Watch Part 2</h2>
+<p>Watch from about 1:35 to the end. Focus on food CAD, investors, innovation and the move from manual to software-controlled cooking.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=5IpqV15frb4&t=95s" target="_blank">
+<img class="videoImg" src="https://img.youtube.com/vi/5IpqV15frb4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5IpqV15frb4/hqdefault.jpg';" alt="YouTube screen grab">
+<div class="video-meta"><strong>Watch Part 2:</strong> Watch this part on YouTube.</div>
+</a>
+<a class="btn" href="https://www.youtube.com/watch?v=5IpqV15frb4&t=95s" target="_blank">Open video</a>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 2">
+<div class="card"><h2>Comprehension 2</h2><p class="small">Click each question to reveal the answer.</p><div class="reveal"><strong>What does the speaker mean by food resolution?</strong><div class="answer">He means precision at around the scale of a millimetre, not inkjet-style 300 dpi.</div></div><div class="reveal"><strong>How is the laser controlled?</strong><div class="answer">Software controls galvo mirrors, which direct the laser beam and control the heat applied to the food.</div></div><div class="reveal"><strong>What kinds of ingredients have they printed?</strong><div class="answer">They have printed dough, spinach, broccoli, chicken and salmon.</div></div><div class="reveal"><strong>What is food CAD compared to?</strong><div class="answer">It is compared to the Photoshop of food.</div></div><div class="reveal"><strong>Why does the speaker compare food printing to smartphones?</strong><div class="answer">Because it may not solve an obvious existing problem, but it could make new things possible once people have it.</div></div></div>
+<div class='card'><h3>Vocabulary from Part 2</h3><div class='dragArea'><div><p>Raw salmon can be turned into a <span class='dropzone' data-ans='paste'></span>.</p><p>The printer uses loaded <span class='dropzone' data-ans='cartridges'></span>.</p><p>The laser beam is directed by galvo <span class='dropzone' data-ans='mirrors'></span>.</p><p>The field is relatively <span class='dropzone' data-ans='uncharted'></span>.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">paste</span><span class="draggable" draggable="true">cartridges</span><span class="draggable" draggable="true">mirrors</span><span class="draggable" draggable="true">uncharted</span><span class="draggable" draggable="true">wavelength</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Vocabulary Review">
+<div class="card"><h2>Vocabulary Review</h2><table class="table"><tr><th>Word / phrase</th><th>Meaning</th><th>Example</th></tr><tr><td>deposit</td><td>place a substance somewhere</td><td>The printer deposits ingredients in fine patterns.</td></tr><tr><td>fine pattern</td><td>a detailed, precise arrangement</td><td>The ingredients are arranged in fine patterns.</td></tr><tr><td>software-controlled</td><td>controlled by a computer program</td><td>The cooking process is software-controlled.</td></tr><tr><td>the sky’s the limit</td><td>almost anything is possible</td><td>With software control, the sky’s the limit.</td></tr><tr><td>texture</td><td>how food feels in the mouth</td><td>The printer can create new food textures.</td></tr><tr><td>pulverise</td><td>crush or blend into tiny pieces</td><td>Raw salmon can be pulverised into a paste.</td></tr><tr><td>cartridge</td><td>a container loaded into a machine</td><td>Ingredients are placed into cartridges.</td></tr><tr><td>high resolution</td><td>very detailed and precise</td><td>The printer deposits food at high resolution.</td></tr><tr><td>wavelength</td><td>a property of light that affects how it behaves</td><td>The laser wavelength affects cooking.</td></tr><tr><td>browning</td><td>making food brown through cooking</td><td>Some settings create browning.</td></tr><tr><td>penetrative cooking</td><td>cooking that reaches deeper into the food</td><td>Different lasers allow more penetrative cooking.</td></tr><tr><td>run the gamut</td><td>include a wide range</td><td>The ingredients run the gamut from dough to salmon.</td></tr><tr><td>uncharted</td><td>not explored or understood yet</td><td>The space is relatively uncharted.</td></tr><tr><td>food CAD</td><td>software for designing food digitally</td><td>Food CAD could let non-programmers design meals.</td></tr><tr><td>democratise</td><td>make something available to more people</td><td>The aim is to democratise software-controlled cooking.</td></tr></table></div>
+<div class='card'><h3>Collocations and Expressions</h3><div class='dragArea'><div><p>raw <span class='dropzone' data-ans='ingredient'></span></p><p>cooking <span class='dropzone' data-ans='process'></span></p><p>food <span class='dropzone' data-ans='resolution'></span></p><p>laser <span class='dropzone' data-ans='broil'></span></p><p>software <span class='dropzone' data-ans='techniques'></span></p><p>manual to software <span class='dropzone' data-ans='control'></span></p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">ingredient</span><span class="draggable" draggable="true">process</span><span class="draggable" draggable="true">resolution</span><span class="draggable" draggable="true">broil</span><span class="draggable" draggable="true">techniques</span><span class="draggable" draggable="true">control</span></div></div></div><div class='card'><h3>Phrasal Verb Exercise</h3><div class='dragArea'><div><p>The printer puts ingredients <span class='dropzone' data-ans='together'></span> in fine patterns.</p><p>The cartridges are loaded <span class='dropzone' data-ans='in'></span> before printing.</p><p>The machine moves the cartridges <span class='dropzone' data-ans='around'></span>.</p><p>The ingredients run <span class='dropzone' data-ans='the gamut'></span> from dough to salmon.</p><p>The speaker wants to move <span class='dropzone' data-ans='into'></span> a new way of making food.</p><p>Once cooking becomes digital, he says we won’t look <span class='dropzone' data-ans='back'></span>.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">together</span><span class="draggable" draggable="true">in</span><span class="draggable" draggable="true">around</span><span class="draggable" draggable="true">the gamut</span><span class="draggable" draggable="true">into</span><span class="draggable" draggable="true">back</span><span class="draggable" draggable="true">off</span></div></div></div><div class='card'><h3>Phrasal Verb Exercise 2: Form Questions</h3><div class='dragArea'><div><p>What kinds of ingredients could be put <span class='dropzone' data-ans='together'></span> by a food printer?</p><p>Would you feel comfortable if raw ingredients were loaded <span class='dropzone' data-ans='in'></span> by cartridge?</p><p>How could software move ingredients <span class='dropzone' data-ans='around'></span> to create new designs?</p><p>Could printed food run <span class='dropzone' data-ans='the gamut'></span> from snacks to restaurant meals?</p><p>Are we moving <span class='dropzone' data-ans='into'></span> a future where cooking becomes digital?</p><p>Once people get used to digital cooking, will they look <span class='dropzone' data-ans='back'></span>?</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">together</span><span class="draggable" draggable="true">in</span><span class="draggable" draggable="true">around</span><span class="draggable" draggable="true">the gamut</span><span class="draggable" draggable="true">into</span><span class="draggable" draggable="true">back</span></div></div></div>
+<div class="card"><div class="prompt"><strong>Speaking extension:</strong> Choose three questions from Phrasal Verb Exercise 2 and discuss them with a partner.</div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+
+<section class="page" data-title="Grammar">
+<div class="card">
+<h2>B2/C1 Grammar: Future Possibility and Innovation</h2>
+<p>This grammar section practises language for describing new technology and future possibilities.</p>
+<table class="table">
+<tr><th>Function</th><th>Pattern</th><th>Example</th></tr>
+<tr><td>Future possibility</td><td>could / might + verb</td><td>Food printers could create textures we cannot imagine.</td></tr>
+<tr><td>Result of a condition</td><td>Once + clause, you can...</td><td>Once cooking is controlled by software, you can design new foods.</td></tr>
+<tr><td>Purpose</td><td>allow someone to + verb</td><td>Food CAD allows non-programmers to design foods.</td></tr>
+<tr><td>Contrast</td><td>not about..., but about...</td><td>This is not about cooking faster, but about creating new food.</td></tr>
+</table>
+</div>
+<div class='card'><h3>Grammar Exercise 1: Drag the correct phrase</h3><div class='dragArea'><div><p>Food printers <span class='dropzone' data-ans='could create'></span> new textures.</p><p>Once the process is software-controlled, people <span class='dropzone' data-ans='can design'></span> new foods.</p><p>Food CAD allows non-programmers <span class='dropzone' data-ans='to control'></span> the machine.</p><p>This is not about doing things faster, <span class='dropzone' data-ans='but about'></span> making new foods.</p><p>Laser settings might <span class='dropzone' data-ans='affect'></span> browning and penetrative cooking.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">could create</span><span class="draggable" draggable="true">can design</span><span class="draggable" draggable="true">to control</span><span class="draggable" draggable="true">but about</span><span class="draggable" draggable="true">affect</span><span class="draggable" draggable="true">to affecting</span></div></div></div>
+<div class="card"><h3>Grammar Exercise 2: Error Correction</h3><p class="small">Click each sentence to reveal the correction.</p>
+<div class="reveal"><strong>Food printers could creates new textures.</strong><div class="answer">Food printers could create new textures.</div></div><div class="reveal"><strong>Once cooking controlled by software, you can design new foods.</strong><div class="answer">Once cooking is controlled by software, you can design new foods.</div></div><div class="reveal"><strong>Food CAD allows people design foods.</strong><div class="answer">Food CAD allows people to design foods.</div></div><div class="reveal"><strong>This is not about cook faster, but about create new food.</strong><div class="answer">This is not about cooking faster, but about creating new food.</div></div>
+</div>
+<div class="card"><h3>Grammar Exercise 3: Sentence Transformations</h3>
+<div class="checkline"><strong>Use “could”.</strong><br>Food printers may create new textures in the future.<input data-contains="could create|textures" placeholder="Write your sentence here"><div class="result"></div></div>
+<div class="checkline"><strong>Use “Once”.</strong><br>Cooking becomes controlled by software. People can design new meals.<input data-contains="once|software" placeholder="Write your sentence here"><div class="result"></div></div>
+<div class="checkline"><strong>Use “not about..., but about”.</strong><br>The technology is not mainly for speed. It is for creating new possibilities.<input data-contains="not about|but about" placeholder="Write your sentence here"><div class="result"></div></div>
+<button class="btn" onclick="checkOpenAnswers()">Check answers</button></div>
+<div class="card"><h3>Useful Patterns</h3><table class="table">
+<tr><th>Purpose</th><th>Useful language</th></tr>
+<tr><td>Explaining innovation</td><td>This technology allows people to... / It opens up the possibility of...</td></tr>
+<tr><td>Describing potential</td><td>It could lead to... / It might make it possible to...</td></tr>
+<tr><td>Responding to criticism</td><td>It may not solve an obvious problem, but...</td></tr>
+<tr><td>Comparing old and new</td><td>This shifts cooking from manual to software control.</td></tr>
+</table></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+
+<section class="page" data-title="Discussion">
+<div class="card"><h2>Discussion</h2><ol>
+<li>Would you trust food cooked by lasers and software?</li>
+<li>Is 3D food printing solving a real problem?</li>
+<li>Could this technology help restaurants, hospitals or people with special diets?</li>
+<li>What might be lost if cooking becomes more digital?</li>
+<li>Would food CAD make cooking more creative or less human?</li>
+<li>What new food textures or designs would you like to create?</li>
+</ol></div>
+<div class="card"><h3>Useful Language for Discussion</h3><table class="table"><tr><th>Giving an opinion</th><th>Evaluating innovation</th><th>Speculating</th></tr>
+<tr><td>I’d argue that...<br>From my perspective...<br>What stands out to me is...</td><td>It solves a real problem because...<br>It feels more like a gimmick because...<br>The main advantage is...</td><td>It could lead to...<br>It might change the way we...<br>In the future, people may...</td></tr></table></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+
+<section class="page" data-title="Role Play">
+<div class="card"><h2>Role Play: Pitching a 3D Food Printer</h2>
+<div class="prompt"><strong>Situation:</strong> A start-up is pitching a 3D food printer to investors. The investors are unsure whether the product solves a real problem.</div>
+<div class="role"><div class="person"><h3>Student A: Founder</h3><p>Explain why software-controlled cooking can create new textures, personalised meals and new possibilities.</p></div>
+<div class="person"><h3>Student B: Investor</h3><p>Question whether people need this technology. Ask about cost, taste, safety, demand and practical use.</p></div></div>
+<h3>Challenge</h3><p>Use at least three phrases from the grammar section.</p>
+<table class="table"><tr><th>Founder language</th><th>Investor language</th></tr><tr><td>This technology allows people to...<br>It is not about..., but about...<br>It could lead to...</td><td>What problem is this solving?<br>It might be too expensive because...<br>Once people try it, will they...?</td></tr></table>
+</div><div class="controls"><button onclick="prevPage()">Previous</button><span></span></div></section>
+
+<footer>ESL CONNECT • Interactive video lesson</footer></div><script>
+const pages=[...document.querySelectorAll('.page')],nav=document.getElementById('nav');
+pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=p.dataset.title;if(i==0)b.classList.add('active');b.onclick=()=>showPage(i);nav.appendChild(b)});
+function showPage(n){pages.forEach((p,i)=>{p.classList.toggle('active',i==n);nav.children[i].classList.toggle('active',i==n)});scrollTo({top:0,behavior:'smooth'})}
+function nextPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c<pages.length-1)showPage(c+1)}
+function prevPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c>0)showPage(c-1)}
+document.querySelectorAll('.reveal').forEach(box=>box.addEventListener('click',()=>box.classList.toggle('open')));
+let draggedWord=null;
+document.addEventListener('dragstart',e=>{if(e.target.classList.contains('draggable'))draggedWord=e.target.textContent.trim()});
+document.addEventListener('dragover',e=>{if(e.target.classList.contains('dropzone'))e.preventDefault()});
+document.addEventListener('drop',e=>{if(e.target.classList.contains('dropzone')){e.preventDefault();e.target.textContent=draggedWord||'';e.target.classList.add('filled');let ok=e.target.textContent.trim()===e.target.dataset.ans;e.target.classList.toggle('correct',ok);e.target.classList.toggle('incorrect',!ok)}});
+function checkOpenAnswers(){document.querySelectorAll('.checkline').forEach(line=>{const input=line.querySelector('input');const result=line.querySelector('.result');const value=input.value.toLowerCase();const checks=input.dataset.contains.split('|');const ok=checks.every(part=>value.includes(part.toLowerCase()));if(ok){result.textContent='Good attempt. Check punctuation and style with your teacher.';result.className='result correctText'}else{result.textContent='Try again. Use the target phrase from the instruction.';result.className='result incorrectText'}})}
+showPage(0);
+</script></body></html>

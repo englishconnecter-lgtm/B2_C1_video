@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ESL CONNECT | Memory, Opportunity and Success</title>
+<style>
+:root{--blue:#0b2f5b;--blue2:#114f95;--yellow:#f4d547;--bg:#f4f7fb;--text:#1e2a38;--muted:#5f7085;--line:#d8e0ea;--good:#1b8f3d;--bad:#c43d34;--soft:#eef6ff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrapper{max-width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;gap:18px;align-items:center}.logo{width:84px;height:84px;background:#fff;color:var(--blue);border:3px solid #fff5b7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;line-height:1.05;text-decoration:none}header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.95}.small{color:var(--muted);font-size:14px}.header-small{color:#fff2a8;font-size:14px}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;background:#eaf0f8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav button{border:none;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700}nav button.active,nav button:hover{background:var(--yellow);color:#18263a}
+.page{display:none;padding:24px}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}@media(max-width:900px){.grid,.dragArea,.role{grid-template-columns:1fr!important}.heroImg{height:auto!important}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 3px 12px rgba(15,47,106,.06)}.card h2,.card h3{margin-top:0;color:var(--blue)}.heroImg,.videoImg{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.08)}.heroImg{height:330px;object-fit:cover}.video-thumb{text-decoration:none;color:inherit}.video-meta{padding:12px 0}.btn{display:inline-block;margin-top:10px;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700}.btn:hover{background:var(--yellow);color:#18263a}
+.revealQ{border:1px solid var(--line);border-radius:12px;padding:0;margin:14px 0;background:#fff;overflow:hidden}.revealQ button{display:block;width:100%;text-align:left;border:0;background:#f8fafc;padding:15px 16px;font-size:16px;line-height:1.45;cursor:pointer;color:var(--text);font-weight:700}.revealQ button:hover{background:#eef4fb}.answer{display:none;border-top:1px solid var(--line);padding:14px 16px;background:#fff}.revealQ.open .answer{display:block}.answer strong{color:var(--good)}.hint{font-size:13px;color:var(--muted);margin:8px 0 0}.prompt{background:#f0f7ff;border:1px solid #cce1ff;border-radius:10px;padding:14px;margin:12px 0}
+.dragArea{display:grid;grid-template-columns:1fr 290px;gap:18px}.dropzone{display:inline-block;min-width:150px;min-height:34px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:5px 10px;vertical-align:middle}.dropzone.filled{border-style:solid;background:#eef6ff;font-weight:700}.dropzone.correct{border-color:#167a46;background:#f0fdf4}.dropzone.incorrect{border-color:#b91c1c;background:#fef2f2}.draggable{background:#e8f0fb;border:1px solid #c7d7ee;border-radius:999px;padding:8px 11px;font-weight:700;color:#0b2f5b;cursor:grab;display:inline-block;margin:5px}.dragBank{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px}.checkBtn{border:none;background:var(--blue2);color:#fff;padding:10px 14px;border-radius:8px;cursor:pointer;margin-top:10px}.checkBtn:hover{background:var(--yellow);color:#18263a}.feedback{font-weight:700;margin-top:8px}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}
+
+.memoryGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}.room{border:2px solid #c7d7ee;background:#f8fbff;border-radius:14px;padding:14px;min-height:155px}.room h3{margin:0 0 8px;color:var(--blue);font-size:17px}.room p{margin:6px 0}.memoryDrop{display:block;min-height:42px;margin-top:10px}.memoryBank{display:flex;flex-wrap:wrap;gap:8px;background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px;margin:12px 0}.memoryControls{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.memoryControls button{border:none;background:var(--blue2);color:#fff;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700}.memoryControls button:hover{background:var(--yellow);color:#18263a}.recallBox{display:none;border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px;margin-top:14px}.recallBox.open{display:block}.recallRow{display:grid;grid-template-columns:170px 1fr;gap:10px;align-items:center;margin:8px 0}.recallRow input{padding:9px;border:1px solid var(--line);border-radius:8px}.recallResult{font-weight:700;margin-top:10px}.hint{background:#fff9db;border:1px solid #f0df84;border-radius:10px;padding:10px;margin-top:10px}.routineList{margin:10px 0 0 18px}.routineList li{margin:6px 0}
+@media(max-width:900px){.memoryGrid{grid-template-columns:1fr}.recallRow{grid-template-columns:1fr}}
+
+.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.table th{background:#eef4fb}.role{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:16px}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.controls button{border:none;background:var(--blue2);color:#fff;padding:11px 16px;border-radius:8px;cursor:pointer}.controls button:hover{background:var(--yellow);color:#18263a}footer{padding:18px 24px 28px;color:var(--muted);text-align:center}.transcript{background:#fbfdff;border-left:4px solid var(--blue2);padding:14px 16px;border-radius:8px}.time{font-weight:700;color:var(--blue2)}
+
+
+/* Prep Part 1 / Prep Part 2 sentence-completion drag-and-drop */
+.matchSentence{
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #d8e1ef;
+  border-radius:10px;
+  background:#fff;
+  overflow:visible!important;
+}
+.matchSentence strong{color:#0b2f5b}
+.matchDrop{
+  display:block;
+  min-height:42px;
+  margin-top:8px;
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:9px 12px!important;
+  line-height:1.45!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-indent:0!important;
+  text-align:left!important;
+}
+.page .dragArea{grid-template-columns:minmax(0,1fr) 340px}
+.page .dragBank{box-sizing:border-box;padding:16px 18px!important;overflow:visible!important}
+.page .dragBank .draggable{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  margin:8px 0!important;
+  padding:12px 16px 13px 20px!important;
+  border-radius:10px!important;
+  line-height:1.45!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  text-indent:0!important;
+  text-align:left!important;
+  transform:none!important;
+}
+@media(max-width:900px){.page .dragArea{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<header>
+<a class="logo" href="https://www.eslconnect.net/" target="_blank">ESL<br/>CONNECT</a>
+<div>
+<h1>Memory, Opportunity and Success</h1>
+<p>B2/C1 video lesson about Joshua Foer, memory techniques, natural talent, opportunity, and the nature versus nurture debate.</p>
+<p class="header-small"><a href="https://www.youtube.com/watch?v=YY6qwSYppIo" style="color:#fff2a8" target="_blank">Open video on YouTube</a></p>
+</div>
+</header>
+<nav id="nav"></nav>
+<section class="page active" data-title="Start">
+<div class="grid">
+<div class="card">
+<h2>Lesson Overview</h2>
+<p>Students watch a short video about how science journalist Joshua Foer became a memory champion. The lesson explores whether success comes mainly from natural ability, training, or access to opportunity.</p>
+<h3>Before you watch</h3>
+<ol>
+<li>Do you think memory is mostly natural ability or a skill people can train?</li>
+<li>What techniques do you use to remember important information?</li>
+<li>How can family background or access to resources affect school success?</li>
+</ol>
+<div class="prompt"><strong>Key question:</strong> Could anyone become a “mental athlete” with the right training and opportunity?</div>
+</div>
+<div class="card">
+<h2>Video</h2>
+<img alt="YouTube screen grab" class="heroImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/YY6qwSYppIo/hqdefault.jpg';" src="https://img.youtube.com/vi/YY6qwSYppIo/maxresdefault.jpg"/>
+<p><a class="btn" href="https://www.youtube.com/watch?v=YY6qwSYppIo" target="_blank">Open video on YouTube</a></p>
+</div>
+</div>
+<div class="controls"><span></span><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Prep for Part 1">
+<div class="card"><h2>Prep Part 1</h2><p class="hint">Drag the correct sentence ending into each gap.</p><div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If someone is a mental athlete,... <span class="dropzone matchDrop" data-ans="they train memory and thinking skills for competition."></span></div><div class="matchSentence"><strong>2.</strong> If someone uses a memory palace,... <span class="dropzone matchDrop" data-ans="they connect information to imagined places."></span></div><div class="matchSentence"><strong>3.</strong> If you give someone a run for their money,... <span class="dropzone matchDrop" data-ans="you challenge them strongly even if they are expected to win."></span></div><div class="matchSentence"><strong>4.</strong> If someone is a formidable opponent,... <span class="dropzone matchDrop" data-ans="they are very strong or difficult to compete against."></span></div><div class="matchSentence"><strong>5.</strong> If someone trains for hours a day,... <span class="dropzone matchDrop" data-ans="they practise intensively to improve a skill."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">they are very strong or difficult to compete against.</span><span class="draggable" draggable="true">you challenge them strongly even if they are expected to win.</span><span class="draggable" draggable="true">they train memory and thinking skills for competition.</span><span class="draggable" draggable="true">they practise intensively to improve a skill.</span><span class="draggable" draggable="true">they connect information to imagined places.</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Watch Part 1">
+<div class="card">
+<h2>Watch Part 1</h2>
+<p>Watch from <span class="time">0:01</span> to about <span class="time">1:26</span>. Focus on Joshua Foer’s journey from journalist to memory champion.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=YY6qwSYppIo" target="_blank"><img alt="YouTube screen grab" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/YY6qwSYppIo/hqdefault.jpg';" src="https://img.youtube.com/vi/YY6qwSYppIo/maxresdefault.jpg"/><div class="video-meta"><strong>Part 1:</strong> Joshua Foer, the memory championship, memory palaces, training, and victory.</div></a>
+<a class="btn" href="https://www.youtube.com/watch?v=YY6qwSYppIo" target="_blank">Watch Part 1 on YouTube</a>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 1">
+<div class="card">
+<h2>Comprehension 1</h2>
+<p class="hint">Click the question to reveal the answer.</p>
+<div class="revealQ"><button>Who was Joshua Foer before he became a memory competitor?</button><div class="answer"><strong>Answer:</strong> He was an American science journalist.</div></div>
+<div class="revealQ"><button>What event was Joshua covering in 2005?</button><div class="answer"><strong>Answer:</strong> He was covering the USA National Memory Championship.</div></div>
+<div class="revealQ"><button>What opportunity did Joshua receive?</button><div class="answer"><strong>Answer:</strong> A former champion offered to train him to become a mental athlete.</div></div>
+<div class="revealQ"><button>What ancient method did Joshua learn?</button><div class="answer"><strong>Answer:</strong> He learned memory palaces, where information is connected to imagined locations.</div></div>
+<div class="revealQ"><button>Where did Joshua train?</button><div class="answer"><strong>Answer:</strong> He trained in his parents’ basement for hours a day.</div></div>
+<div class="revealQ"><button>What happened when he returned to the championship in 2006?</button><div class="answer"><strong>Answer:</strong> He competed, reached the final, and won.</div></div>
+</div>
+<div class="card">
+<h3>Vocabulary from Part 1</h3>
+<div class="dragArea">
+<div>
+<p>Joshua thought his brain was pretty <span class="dropzone" data-ans="average"></span>.</p>
+<p>A former champion offered to <span class="dropzone" data-ans="train"></span> him.</p>
+<p>He used memory <span class="dropzone" data-ans="palaces"></span> to remember information.</p>
+<p>He gave former champions a run for their <span class="dropzone" data-ans="money"></span>.</p>
+<p>He was up against a <span class="dropzone" data-ans="formidable"></span> opponent.</p>
+</div>
+<div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">average</span><span class="draggable" draggable="true">palaces</span><span class="draggable" draggable="true">money</span><span class="draggable" draggable="true">train</span><span class="draggable" draggable="true">formidable</span><span class="draggable" draggable="true">genetic</span></div>
+</div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Prep for Part 2">
+<div class="card"><h2>Prep Part 2</h2><p class="hint">Drag the correct sentence ending into each gap.</p><div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If someone has opportunity,... <span class="dropzone matchDrop" data-ans="they have access to the right conditions and chances to improve."></span></div><div class="matchSentence"><strong>2.</strong> If there is an attainment gap,... <span class="dropzone matchDrop" data-ans="there is a difference in educational achievement between groups."></span></div><div class="matchSentence"><strong>3.</strong> If people discuss nature versus nurture,... <span class="dropzone matchDrop" data-ans="they compare genetics with environment and experience."></span></div><div class="matchSentence"><strong>4.</strong> If students do extracurricular activities,... <span class="dropzone matchDrop" data-ans="they take part in activities outside normal school lessons."></span></div><div class="matchSentence"><strong>5.</strong> If nurture has a major impact,... <span class="dropzone matchDrop" data-ans="environment, training and support strongly affect outcomes."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">they compare genetics with environment and experience.</span><span class="draggable" draggable="true">they have access to the right conditions and chances to improve.</span><span class="draggable" draggable="true">they take part in activities outside normal school lessons.</span><span class="draggable" draggable="true">there is a difference in educational achievement between groups.</span><span class="draggable" draggable="true">environment, training and support strongly affect outcomes.</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Watch Part 2">
+<div class="card">
+<h2>Watch Part 2</h2>
+<p>Watch from about <span class="time">1:26</span> to the end. Focus on opportunity, education, nutrition, technology, genetics and Joshua’s success.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=YY6qwSYppIo&amp;t=86s" target="_blank"><img alt="YouTube screen grab" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/YY6qwSYppIo/hqdefault.jpg';" src="https://img.youtube.com/vi/YY6qwSYppIo/maxresdefault.jpg"/><div class="video-meta"><strong>Part 2:</strong> opportunity, school holidays, the attainment gap, IQ scores, nurture, and training.</div></a>
+<a class="btn" href="https://www.youtube.com/watch?v=YY6qwSYppIo&amp;t=86s" target="_blank">Watch Part 2 on YouTube</a>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 2">
+<div class="card">
+<h2>Comprehension 2</h2>
+<p class="hint">Click the question to reveal the answer.</p>
+<div class="revealQ"><button>What does the video say we need to consider to understand Joshua’s success?</button><div class="answer"><strong>Answer:</strong> We need to consider the role of opportunity.</div></div>
+<div class="revealQ"><button>What was once believed about richer children and poorer children in school?</button><div class="answer"><strong>Answer:</strong> It was thought that richer children did better because they were more naturally gifted.</div></div>
+<div class="revealQ"><button>What can create an attainment gap during school holidays?</button><div class="answer"><strong>Answer:</strong> Poorer children may lack access to extracurricular activities when they are not in school.</div></div>
+<div class="revealQ"><button>Which two extra factors also contribute to outcomes?</button><div class="answer"><strong>Answer:</strong> Nutrition and access to technology.</div></div>
+<div class="revealQ"><button>What happened to IQ scores across the globe in the 20th century?</button><div class="answer"><strong>Answer:</strong> They rose by an average of about 30 points.</div></div>
+<div class="revealQ"><button>According to the video, which has the greater impact on differences in outcome: nature or nurture?</button><div class="answer"><strong>Answer:</strong> Nurture has the greater impact.</div></div>
+<div class="revealQ"><button>What three things contributed to Joshua’s success?</button><div class="answer"><strong>Answer:</strong> Expert training, access to special techniques, and a quiet place to study.</div></div>
+<div class="revealQ"><button>What humorous detail does the video mention at the end?</button><div class="answer"><strong>Answer:</strong> Even Joshua Foer can sometimes forget where he put his car keys.</div></div>
+</div>
+<div class="card">
+<h3>Vocabulary from Part 2</h3>
+<div class="dragArea">
+<div>
+<p>To understand Joshua’s success, we need to consider the role of <span class="dropzone" data-ans="opportunity"></span>.</p>
+<p>School holidays can create an attainment <span class="dropzone" data-ans="gap"></span>.</p>
+<p>Nutrition and access to technology make a <span class="dropzone" data-ans="contribution"></span>.</p>
+<p>These factors have nothing to do with <span class="dropzone" data-ans="genetics"></span>.</p>
+<p>In the video, nurture has the greater <span class="dropzone" data-ans="impact"></span>.</p>
+</div>
+<div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">gap</span><span class="draggable" draggable="true">genetics</span><span class="draggable" draggable="true">opportunity</span><span class="draggable" draggable="true">impact</span><span class="draggable" draggable="true">contribution</span><span class="draggable" draggable="true">basement</span></div>
+</div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Vocabulary Review">
+<div class="card">
+<h2>Vocabulary Review</h2>
+<p>This expanded review focuses on useful B2/C1 language from the video: memory training, competition, opportunity, education, and the nature-versus-nurture debate.</p>
+<table class="table">
+<tr><th>Word / phrase</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>average</td><td>normal; not especially high or low</td><td>Joshua thought his memory was average.</td></tr>
+<tr><td>mental athlete</td><td>a person who trains memory skills for competition</td><td>Mental athletes practise remembering cards and numbers.</td></tr>
+<tr><td>memory palace</td><td>a memory method using imagined locations</td><td>He used a memory palace to remember information.</td></tr>
+<tr><td>mnemonic technique</td><td>a method that helps you remember information</td><td>Mnemonic techniques can make facts easier to recall.</td></tr>
+<tr><td>competitive instinct</td><td>a strong desire to compete and win</td><td>His competitive instinct took over during training.</td></tr>
+<tr><td>novice</td><td>a beginner; someone new to an activity</td><td>Despite being a novice, Joshua reached the final.</td></tr>
+<tr><td>formidable opponent</td><td>a very strong and difficult competitor</td><td>He was up against a formidable opponent.</td></tr>
+<tr><td>give someone a run for their money</td><td>challenge someone strongly</td><td>The newcomer gave former champions a run for their money.</td></tr>
+<tr><td>natural ability</td><td>talent someone seems to have without training</td><td>The video questions whether success is only about natural ability.</td></tr>
+<tr><td>naturally gifted</td><td>having strong ability from birth</td><td>People used to think richer children were more naturally gifted.</td></tr>
+<tr><td>extracurricular activities</td><td>activities outside normal school lessons</td><td>Some children lack access to extracurricular activities during holidays.</td></tr>
+<tr><td>attainment gap</td><td>a difference in educational achievement</td><td>Long holidays can increase the attainment gap.</td></tr>
+<tr><td>access</td><td>the ability or opportunity to use something</td><td>Access to technology can affect educational outcomes.</td></tr>
+<tr><td>make a contribution</td><td>help cause or improve something</td><td>Nutrition and technology make a contribution to learning.</td></tr>
+<tr><td>genetics</td><td>inherited biological characteristics</td><td>The video says these factors have nothing to do with genetics.</td></tr>
+<tr><td>nurture</td><td>environment, training, support, and experience</td><td>The video argues that nurture has a major impact.</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>Vocabulary Exercise 1: Complete the sentences</h3>
+<div class="dragArea">
+<div>
+<p>Joshua started as a journalist, but later became a memory <span class="dropzone" data-ans="competitor"></span>.</p>
+<p>A memory <span class="dropzone" data-ans="palace"></span> connects information with places in your mind.</p>
+<p>He was a <span class="dropzone" data-ans="novice"></span>, but he still reached the final.</p>
+<p>He was up against a <span class="dropzone" data-ans="formidable"></span> opponent.</p>
+<p>Special training and techniques contributed <span class="dropzone" data-ans="to"></span> his success.</p>
+<p>The video suggests that success is strongly shaped by <span class="dropzone" data-ans="opportunity"></span>.</p>
+</div>
+<div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">palace</span><span class="draggable" draggable="true">novice</span><span class="draggable" draggable="true">formidable</span><span class="draggable" draggable="true">competitor</span><span class="draggable" draggable="true">opportunity</span><span class="draggable" draggable="true">to</span><span class="draggable" draggable="true">genetics</span></div>
+</div>
+</div>
+<div class="card">
+<h3>Vocabulary Exercise 2: Phrasal Verbs and Expressions</h3>
+<div class="dragArea">
+<div>
+<p>Joshua was up <span class="dropzone" data-ans="against"></span> a formidable opponent.</p>
+<p>His competitive instinct took <span class="dropzone" data-ans="over"></span>.</p>
+<p>The training methods contributed <span class="dropzone" data-ans="to"></span> his success.</p>
+<p>Some factors have nothing to do <span class="dropzone" data-ans="with"></span> genetics.</p>
+<p>Joshua gave former champions a run <span class="dropzone" data-ans="for"></span> their money.</p>
+<p>The video asks us to look <span class="dropzone" data-ans="beyond"></span> natural talent.</p>
+<p>Opportunity can help explain why some students fall <span class="dropzone" data-ans="behind"></span>.</p>
+</div>
+<div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">over</span><span class="draggable" draggable="true">with</span><span class="draggable" draggable="true">against</span><span class="draggable" draggable="true">to</span><span class="draggable" draggable="true">for</span><span class="draggable" draggable="true">beyond</span><span class="draggable" draggable="true">behind</span><span class="draggable" draggable="true">through</span></div>
+</div>
+</div>
+<div class="card">
+<h3>Vocabulary Exercise 3: Word Families</h3>
+<p>Use the correct form of the word in brackets. Click each sentence to reveal a possible answer.</p>
+<div class="revealQ"><button>1. Memory champions use powerful __________ techniques. (MNEMONIC)</button><div class="answer"><strong>Answer:</strong> mnemonic</div></div>
+<div class="revealQ"><button>2. Joshua’s progress was partly the result of expert __________. (TRAIN)</button><div class="answer"><strong>Answer:</strong> training</div></div>
+<div class="revealQ"><button>3. Access to technology can affect educational __________. (OUTCOME)</button><div class="answer"><strong>Answer:</strong> outcomes</div></div>
+<div class="revealQ"><button>4. Poorer children may have fewer __________ activities during holidays. (EXTRACURRICULAR)</button><div class="answer"><strong>Answer:</strong> extracurricular</div></div>
+<div class="revealQ"><button>5. Nutrition can make an important __________ to learning. (CONTRIBUTE)</button><div class="answer"><strong>Answer:</strong> contribution</div></div>
+<div class="revealQ"><button>6. The video challenges the idea that success is mostly __________. (GENETIC)</button><div class="answer"><strong>Answer:</strong> genetic</div></div>
+</div>
+<div class="card">
+<h3>Useful B2/C1 Collocations</h3>
+<table class="table">
+<tr><th>Collocation</th><th>Meaning / Use</th><th>Example sentence</th></tr>
+<tr><td>test the limits</td><td>find out how far something can go</td><td>The competition tests the limits of the human brain.</td></tr>
+<tr><td>cover an event</td><td>report on an event as a journalist</td><td>Joshua was covering the memory championship.</td></tr>
+<tr><td>seize an opportunity</td><td>take a chance when it appears</td><td>He seized the opportunity to train with a former champion.</td></tr>
+<tr><td>develop a skill</td><td>improve an ability through practice</td><td>He developed his memory skills through daily training.</td></tr>
+<tr><td>widen the gap</td><td>make a difference between groups larger</td><td>Unequal access can widen the attainment gap.</td></tr>
+<tr><td>reduce inequality</td><td>make opportunities fairer</td><td>Schools can reduce inequality by offering extra support.</td></tr>
+</table>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Grammar">
+<div class="card">
+<h2>B2/C1 Grammar: Contrast, Cause and Emphasis</h2>
+<p>This expanded section practises language for explaining surprising results, causes, contributing factors and the nature-versus-nurture argument.</p>
+<table class="table">
+<tr><th>Function</th><th>Useful pattern</th><th>Example</th></tr>
+<tr><td>Contrast with a noun or -ing form</td><td>Despite / In spite of + noun/-ing, ...</td><td>Despite being a novice, Joshua reached the final.</td></tr>
+<tr><td>Contrast with a full clause</td><td>Although / Even though + subject + verb, ...</td><td>Although he was new to the competition, he performed extremely well.</td></tr>
+<tr><td>Cause</td><td>... because / since / as ...</td><td>He improved because he trained for hours every day.</td></tr>
+<tr><td>Cause with noun phrase</td><td>because of / due to + noun phrase</td><td>IQ scores rose partly because of nutrition and technology.</td></tr>
+<tr><td>Contribution</td><td>... contributed to ... / played a role in ...</td><td>Expert training contributed to his success.</td></tr>
+<tr><td>Emphasis</td><td>It was ... that ...</td><td>It was opportunity that helped explain his progress.</td></tr>
+<tr><td>Balanced contrast</td><td>not ... but ...</td><td>It is not only nature but also nurture that shapes outcomes.</td></tr>
+<tr><td>Result</td><td>As a result, ... / Consequently, ...</td><td>As a result, he became a serious competitor.</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>Grammar Exercise 1: Choose the correct linker</h3>
+<div class="dragArea">
+<div>
+<p><span class="dropzone" data-ans="Despite"></span> being a newcomer, Joshua reached the final.</p>
+<p><span class="dropzone" data-ans="Although"></span> he was a novice, he gave former champions a run for their money.</p>
+<p>IQ scores rose partly <span class="dropzone" data-ans="because of"></span> better nutrition and technology.</p>
+<p>School holidays can widen the attainment gap <span class="dropzone" data-ans="because"></span> some children lack access to activities.</p>
+<p>His quiet study space played a role <span class="dropzone" data-ans="in"></span> his success.</p>
+<p><span class="dropzone" data-ans="As a result"></span>, Joshua entered the championship as a competitor.</p>
+</div>
+<div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">Despite</span><span class="draggable" draggable="true">Although</span><span class="draggable" draggable="true">because of</span><span class="draggable" draggable="true">because</span><span class="draggable" draggable="true">in</span><span class="draggable" draggable="true">As a result</span><span class="draggable" draggable="true">therefore of</span></div>
+</div>
+</div>
+<div class="card">
+<h3>Grammar Exercise 2: Sentence Transformations</h3>
+<p>Click each item to reveal a stronger B2/C1 version.</p>
+<div class="revealQ"><button>1. He was a novice, but he reached the final. Start with: Despite...</button><div class="answer"><strong>Answer:</strong> Despite being a novice, he reached the final.</div></div>
+<div class="revealQ"><button>2. He improved because he had expert training. Use: due to...</button><div class="answer"><strong>Answer:</strong> He improved due to expert training.</div></div>
+<div class="revealQ"><button>3. Opportunity helped explain his success. Use: It was...</button><div class="answer"><strong>Answer:</strong> It was opportunity that helped explain his success.</div></div>
+<div class="revealQ"><button>4. Nutrition and technology helped IQ scores rise. Use: contributed to...</button><div class="answer"><strong>Answer:</strong> Nutrition and technology contributed to the rise in IQ scores.</div></div>
+<div class="revealQ"><button>5. Success is not only about genetics. It is also about environment. Use: not only... but also...</button><div class="answer"><strong>Answer:</strong> Success is shaped not only by genetics but also by environment.</div></div>
+<div class="revealQ"><button>6. Some children lack access to activities. The attainment gap can grow. Use: As a result...</button><div class="answer"><strong>Answer:</strong> Some children lack access to activities. As a result, the attainment gap can grow.</div></div>
+</div>
+<div class="card">
+<h3>Grammar Exercise 3: Error Correction</h3>
+<p>Click each sentence to reveal the correction.</p>
+<div class="revealQ"><button>1. Despite he was a novice, Joshua won the competition.</button><div class="answer"><strong>Correction:</strong> Although he was a novice, Joshua won the competition. / Despite being a novice, Joshua won the competition.</div></div>
+<div class="revealQ"><button>2. IQ scores rose because of children had better nutrition.</button><div class="answer"><strong>Correction:</strong> IQ scores rose because children had better nutrition. / IQ scores rose because of better nutrition.</div></div>
+<div class="revealQ"><button>3. His training contributed in his success.</button><div class="answer"><strong>Correction:</strong> His training contributed to his success.</div></div>
+<div class="revealQ"><button>4. It was his techniques which helped him to win.</button><div class="answer"><strong>Correction:</strong> It was his techniques that helped him win. / It was his techniques that helped him to win.</div></div>
+<div class="revealQ"><button>5. The video says not nature but nurture have the greater impact.</button><div class="answer"><strong>Correction:</strong> The video says that not nature but nurture has the greater impact.</div></div>
+</div>
+<div class="card">
+<h3>Useful Patterns for Speaking</h3>
+<table class="table">
+<tr><th>Purpose</th><th>Pattern</th><th>Example</th></tr>
+<tr><td>Explain a surprising achievement</td><td>Despite + -ing, ...</td><td>Despite starting late, he became highly successful.</td></tr>
+<tr><td>Compare two explanations</td><td>It is not simply ..., but ...</td><td>It is not simply talent, but access to training that matters.</td></tr>
+<tr><td>Add a contributing factor</td><td>Another factor that contributed to this was ...</td><td>Another factor that contributed to this was his quiet study space.</td></tr>
+<tr><td>Explain inequality</td><td>This can widen the gap between ... and ...</td><td>This can widen the gap between richer and poorer students.</td></tr>
+<tr><td>Make a careful claim</td><td>This suggests that ...</td><td>This suggests that opportunity plays a major role in success.</td></tr>
+</table>
+<div class="prompt"><strong>Speaking task:</strong> Explain why one person may succeed faster than another. Use at least three patterns from this page.</div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Discussion">
+<div class="card">
+<h2>Thought-Provoking Questions</h2>
+<ol>
+<li>Do you think success is more about natural ability or access to opportunity?</li>
+<li>Should schools do more to reduce the attainment gap during long holidays?</li>
+<li>Can memory techniques be useful for language learning?</li>
+<li>Is it fair to call someone “gifted” if they have had more training and support?</li>
+<li>What opportunities have helped you improve at something?</li>
+<li>Would you train for a memory competition? Why or why not?</li>
+</ol>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Memory Palace Game">
+<div class="card">
+<h2>Interactive Memory Palace Game</h2>
+<p>Practise the memory palace technique from the video. You will memorise a shopping list by connecting each item to a step in a normal morning routine.</p>
+<div class="hint"><strong>How it works:</strong> imagine your routine clearly. Put one funny or exaggerated shopping item in each place. Then mentally walk through the routine again to remember the list in order.</div>
+</div>
+<div class="card">
+<h3>Step 1: Build your routine palace</h3>
+<p>Drag each shopping item into the correct step of the routine.</p>
+<ol class="routineList">
+<li>Wake up in bed.</li>
+<li>Brush your teeth in the bathroom.</li>
+<li>Make breakfast in the kitchen.</li>
+<li>Put on your shoes by the front door.</li>
+<li>Check your bag before leaving.</li>
+<li>Walk to the bus stop.</li>
+</ol>
+<div class="memoryBank" id="memoryBank">
+<span class="draggable" draggable="true">milk</span>
+<span class="draggable" draggable="true">bread</span>
+<span class="draggable" draggable="true">eggs</span>
+<span class="draggable" draggable="true">bananas</span>
+<span class="draggable" draggable="true">coffee</span>
+<span class="draggable" draggable="true">toothpaste</span>
+</div>
+<div class="memoryGrid" id="palaceGrid">
+<div class="room"><h3>1. Bed</h3><p>You wake up and your pillow is soaked in...</p><span class="dropzone memoryDrop" data-ans="milk"></span></div>
+<div class="room"><h3>2. Bathroom sink</h3><p>You pick up your toothbrush, but it is covered in...</p><span class="dropzone memoryDrop" data-ans="toothpaste"></span></div>
+<div class="room"><h3>3. Kitchen table</h3><p>At breakfast, three giant...</p><span class="dropzone memoryDrop" data-ans="eggs"></span></div>
+<div class="room"><h3>4. Front door</h3><p>You try to put on your shoes, but they are full of...</p><span class="dropzone memoryDrop" data-ans="bread"></span></div>
+<div class="room"><h3>5. School bag</h3><p>You open your bag and find a bunch of...</p><span class="dropzone memoryDrop" data-ans="bananas"></span></div>
+<div class="room"><h3>6. Bus stop</h3><p>At the bus stop, everyone is holding a cup of...</p><span class="dropzone memoryDrop" data-ans="coffee"></span></div>
+</div>
+<div class="memoryControls">
+<button onclick="checkPalace()">Check palace</button>
+<button onclick="toggleRecall()">Hide palace and test recall</button>
+<button onclick="resetMemoryGame()">Reset game</button>
+</div>
+<div class="recallResult" id="palaceFeedback"></div>
+</div>
+<div class="card recallBox" id="recallBox">
+<h3>Step 2: Recall test</h3>
+<p>Without looking back at the palace, write the six shopping items in order.</p>
+<div class="recallRow"><label>1. Bed</label><input data-ans="milk" placeholder="Shopping item..."/></div>
+<div class="recallRow"><label>2. Bathroom sink</label><input data-ans="toothpaste" placeholder="Shopping item..."/></div>
+<div class="recallRow"><label>3. Kitchen table</label><input data-ans="eggs" placeholder="Shopping item..."/></div>
+<div class="recallRow"><label>4. Front door</label><input data-ans="bread" placeholder="Shopping item..."/></div>
+<div class="recallRow"><label>5. School bag</label><input data-ans="bananas" placeholder="Shopping item..."/></div>
+<div class="recallRow"><label>6. Bus stop</label><input data-ans="coffee" placeholder="Shopping item..."/></div>
+<div class="memoryControls"><button onclick="checkRecall()">Check recall</button><button onclick="showPalaceAgain()">Show palace again</button></div>
+<div class="recallResult" id="recallFeedback"></div>
+</div>
+<div class="card">
+<h3>Step 3: Create your own list</h3>
+<p>Choose six new shopping items and connect them to your own routine. Use vivid images: strange, funny, colourful, oversized, noisy or impossible.</p>
+<div class="prompt"><strong>Speaking task:</strong> Explain your routine to a partner using sequence language: <em>First, when I wake up..., Then, in the bathroom..., After that..., Finally...</em></div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Role Play">
+<div class="card">
+<h2>Role Play</h2>
+<div class="prompt"><strong>Situation:</strong> A school is deciding how to support students during the long summer holidays to reduce the attainment gap.</div>
+<div class="role">
+<div class="person"><h3>Student A: School leader</h3><p>Explain why the school wants to offer memory training, technology access, and extracurricular activities.</p></div>
+<div class="person"><h3>Student B: Parent / student representative</h3><p>Ask questions about fairness, cost, access, motivation, and whether the plan will really help students.</p></div>
+</div>
+<h3>Useful language</h3>
+<table class="table">
+<tr><th>Explaining a plan</th><th>Questioning / challenging</th></tr>
+<tr><td>One way to reduce the gap is...<br/>This could contribute to...<br/>Students would benefit from...</td><td>How would everyone access...?<br/>Would this really solve...?<br/>What about students who...?</td></tr>
+</table>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><span></span></div>
+</section>
+<footer>ESL CONNECT • Interactive video lesson</footer>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.page')],nav=document.getElementById('nav');
+pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=p.dataset.title;if(i===0)b.classList.add('active');b.onclick=()=>showPage(i);nav.appendChild(b)});
+function showPage(n){pages.forEach((p,i)=>{p.classList.toggle('active',i===n);nav.children[i].classList.toggle('active',i===n)});scrollTo({top:0,behavior:'smooth'})}
+function nextPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c<pages.length-1)showPage(c+1)}
+function prevPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c>0)showPage(c-1)}
+document.querySelectorAll('.revealQ button').forEach(btn=>{btn.addEventListener('click',()=>{btn.parentElement.classList.toggle('open')})});
+let draggedWord=null;document.addEventListener('dragstart',e=>{if(e.target.classList.contains('draggable'))draggedWord=e.target.textContent.trim()});
+document.addEventListener('dragover',e=>{if(e.target.classList.contains('dropzone'))e.preventDefault()});
+document.addEventListener('drop',e=>{if(e.target.classList.contains('dropzone')){e.preventDefault();e.target.textContent=draggedWord||'';e.target.classList.add('filled');let ok=e.target.textContent.trim()===e.target.dataset.ans;e.target.classList.toggle('correct',ok);e.target.classList.toggle('incorrect',!ok)}});
+
+function checkPalace(){
+  const drops=[...document.querySelectorAll('.memoryDrop')];
+  let correct=0;
+  drops.forEach(d=>{
+    let ok=d.textContent.trim().toLowerCase()===d.dataset.ans.toLowerCase();
+    d.classList.toggle('correct',ok);
+    d.classList.toggle('incorrect',!ok && d.textContent.trim()!=='');
+    if(ok)correct++;
+  });
+  const fb=document.getElementById('palaceFeedback');
+  if(fb){
+    fb.textContent=`${correct} / ${drops.length} correct. ${correct===drops.length?'Excellent — now hide the palace and test your memory.':'Check the routine steps and try again.'}`;
+    fb.style.color=correct===drops.length?'var(--good)':'var(--bad)';
+  }
+}
+function toggleRecall(){
+  const grid=document.getElementById('palaceGrid');
+  const bank=document.getElementById('memoryBank');
+  const box=document.getElementById('recallBox');
+  if(grid)grid.style.display='none';
+  if(bank)bank.style.display='none';
+  if(box){box.classList.add('open');box.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+function showPalaceAgain(){
+  const grid=document.getElementById('palaceGrid');
+  const bank=document.getElementById('memoryBank');
+  if(grid)grid.style.display='grid';
+  if(bank)bank.style.display='flex';
+}
+function checkRecall(){
+  const inputs=[...document.querySelectorAll('#recallBox input')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    let ok=inp.value.trim().toLowerCase()===inp.dataset.ans.toLowerCase();
+    inp.style.borderColor=ok?'#167a46':'#b91c1c';
+    inp.style.background=ok?'#f0fdf4':'#fef2f2';
+    if(ok)correct++;
+  });
+  const fb=document.getElementById('recallFeedback');
+  if(fb){
+    fb.textContent=`Recall score: ${correct} / ${inputs.length}. ${correct===inputs.length?'Perfect — your routine palace worked!':'Walk through the routine again and try once more.'}`;
+    fb.style.color=correct===inputs.length?'var(--good)':'var(--bad)';
+  }
+}
+function resetMemoryGame(){
+  document.querySelectorAll('.memoryDrop').forEach(d=>{d.textContent='';d.classList.remove('filled','correct','incorrect')});
+  document.querySelectorAll('#recallBox input').forEach(i=>{i.value='';i.removeAttribute('style')});
+  const pf=document.getElementById('palaceFeedback'); if(pf)pf.textContent='';
+  const rf=document.getElementById('recallFeedback'); if(rf)rf.textContent='';
+  const box=document.getElementById('recallBox'); if(box)box.classList.remove('open');
+  showPalaceAgain();
+}
+
+showPage(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ESL CONNECT | The Right Idea at the Wrong Time</title>
+<style>
+:root{--blue:#0b2f5b;--blue2:#114f95;--yellow:#f4d547;--bg:#f4f7fb;--text:#1e2a38;--muted:#5f7085;--line:#d8e0ea;--good:#1b8f3d;--bad:#c43d34}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrapper{max-width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;gap:18px;align-items:center}.logo{width:84px;height:84px;background:#fff;color:var(--blue);border:3px solid #fff5b7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;line-height:1.05;text-decoration:none;flex:0 0 auto}header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;background:#eaf0f8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav button{border:none;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700}nav button.active,nav button:hover{background:var(--yellow);color:#18263a}
+.page{display:none;padding:24px}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}@media(max-width:900px){.grid,.dragArea,.role,.twoCol,.matchingList{grid-template-columns:1fr!important}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 3px 12px rgba(15,47,106,.06)}.card h2,.card h3{margin-top:0;color:var(--blue)}.small{color:var(--muted);font-size:14px}
+.heroImg,.videoImg{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.08)}.heroImg{height:330px;object-fit:cover}.video-thumb{text-decoration:none;color:inherit}.video-meta{padding:12px 0}.btn{display:inline-block;margin-top:10px;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700;border:none;cursor:pointer}.btn:hover{background:var(--yellow);color:#18263a}
+.reveal{border:1px solid var(--line);border-radius:12px;padding:15px;margin:14px 0;background:#fff;cursor:pointer}.reveal:hover{background:#f8fbff}.reveal .answer{display:none;margin-top:10px;padding:12px;border-left:4px solid var(--yellow);background:#fffbe6;border-radius:8px}.reveal.open .answer{display:block}.reveal strong{color:var(--blue)}
+.dragArea{display:grid;grid-template-columns:1fr 290px;gap:18px}.dropzone{display:inline-block;min-width:150px;min-height:34px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:5px 10px;vertical-align:middle}.dropzone.filled{border-style:solid;background:#eef6ff;font-weight:700}.dropzone.correct{border-color:#167a46;background:#f0fdf4}.dropzone.incorrect{border-color:#b91c1c;background:#fef2f2}.draggable{background:#e8f0fb;border:1px solid #c7d7ee;border-radius:999px;padding:8px 11px;font-weight:700;color:#0b2f5b;cursor:grab;display:inline-block;margin:5px}.dragBank{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px}
+.matchingList{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}.matchLeft,.matchRight{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:14px}.matchItem{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}.matchItem label{font-weight:700;color:var(--blue);min-width:28px}.matchItem select{padding:8px;border:1px solid #c8d5e6;border-radius:8px;background:#fff;min-width:80px}.matchEnd{margin:10px 0;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff}.matchEnd strong{color:var(--blue)}.matchFeedback{font-weight:700;margin-top:12px}
+.correctChoice{background:#f0fdf4!important;border-color:#167a46!important;color:#14532d!important;font-weight:700}.incorrectChoice{background:#fef2f2!important;border-color:#b91c1c!important;color:#7f1d1d!important;font-weight:700}
+.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.table th{background:#eef4fb}.role{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:16px}.prompt{background:#f0f7ff;border:1px solid #cce1ff;border-radius:10px;padding:14px;margin:12px 0}.checkline{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.checkline input{width:100%;padding:10px;border:1px solid #c8d5e6;border-radius:8px;margin-top:8px}.result{font-weight:700;margin-top:8px;min-height:22px}.correctText{color:var(--good)}.incorrectText{color:var(--bad)}
+.controls{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.controls button{border:none;background:var(--blue2);color:#fff;padding:11px 16px;border-radius:8px;cursor:pointer}.controls button:hover{background:var(--yellow);color:#18263a}footer{padding:18px 24px 28px;color:var(--muted);text-align:center}
+
+.matchDrop{display:block;min-height:42px;margin-top:8px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:8px}
+.matchDrop.filled{border-style:solid;background:#eef6ff;font-weight:700}
+.matchDrop.correct{border-color:#167a46;background:#f0fdf4;color:#14532d}
+.matchDrop.incorrect{border-color:#b91c1c;background:#fef2f2;color:#7f1d1d}
+.matchSentence{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.matchSentence strong{color:var(--blue)}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<header>
+<a class="logo" href="https://www.eslconnect.net/" target="_blank">ESL<br/>CONNECT</a>
+<div><h1>The Right Idea at the Wrong Time</h1><p>B2/C1 video lesson on invention, timing, failure, innovation and persistence.</p><p class="small"><a href="https://www.youtube.com/watch?v=b9qZWG-07M8" style="color:#fff2a8" target="_blank">Open video on YouTube</a></p></div>
+</header>
+<nav id="nav"></nav>
+<section class="page active" data-title="Start">
+<div class="grid">
+<div class="card"><h2>Lesson Overview</h2><p>Students explore why some inventions succeed while others fail, even when the original idea is brilliant. The lesson looks at Douglas Engelbart and the mouse, Stephanie Kwolek and Kevlar, Morton Heilig and early virtual reality, and Wilson Greatbatch and the pacemaker.</p><h3>Before you watch</h3><ol><li>Can a good idea fail because it arrives too early?</li><li>Why do some inventors become famous while others are forgotten?</li><li>Is failure always a bad thing in innovation?</li></ol></div>
+<div class="card"><h2>Video</h2><img alt="YouTube screen grab" class="heroImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/b9qZWG-07M8/hqdefault.jpg';" src="https://img.youtube.com/vi/b9qZWG-07M8/maxresdefault.jpg"/><p><a class="btn" href="https://www.youtube.com/watch?v=b9qZWG-07M8" target="_blank">Open video on YouTube</a></p></div>
+</div><div class="controls"><span></span><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Prep Part 1">
+<div class="card">
+<h2>Prep for Part 1</h2>
+<p class="small">Drag the correct sentence ending into each gap.</p>
+<div class="dragArea">
+<div>
+<div class="matchSentence"><strong>1.</strong> An invention that is a non-starter... <span class="dropzone matchDrop" data-ans="has almost no chance of succeeding."></span></div>
+<div class="matchSentence"><strong>2.</strong> If a device is clunky,... <span class="dropzone matchDrop" data-ans="it is awkward, heavy or difficult to use."></span></div>
+<div class="matchSentence"><strong>3.</strong> When inventors showcase a product,... <span class="dropzone matchDrop" data-ans="they present it publicly so people can see how it works."></span></div>
+<div class="matchSentence"><strong>4.</strong> If something becomes a smash hit,... <span class="dropzone matchDrop" data-ans="it becomes extremely successful or popular."></span></div>
+</div>
+<div class="dragBank">
+<h3>Sentence endings</h3>
+<span class="draggable" draggable="true">it becomes extremely successful or popular.</span>
+<span class="draggable" draggable="true">they present it publicly so people can see how it works.</span>
+<span class="draggable" draggable="true">has almost no chance of succeeding.</span>
+<span class="draggable" draggable="true">it is awkward, heavy or difficult to use.</span>
+</div>
+</div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Watch Part 1">
+<div class="card"><h2>Watch Part 1</h2><p>Watch from 0:00 to about 1:54. Focus on Douglas Engelbart, the mouse, Xerox and Steve Jobs.</p><a class="video-thumb" href="https://www.youtube.com/watch?v=b9qZWG-07M8" target="_blank"><img alt="YouTube screen grab" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/b9qZWG-07M8/hqdefault.jpg';" src="https://img.youtube.com/vi/b9qZWG-07M8/maxresdefault.jpg"/><div class="video-meta"><strong>Part 1:</strong> Engelbart creates the mouse, but someone else sees its commercial potential.</div></a><a class="btn" href="https://www.youtube.com/watch?v=b9qZWG-07M8" target="_blank">Watch Part 1 on YouTube</a></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 1">
+<div class="card"><h2>Comprehension 1</h2><p class="small">Click each question to reveal the answer.</p>
+<div class="reveal"><strong>Why did Engelbart think computer interaction needed to change?</strong><div class="answer">He thought the existing keyboards and joysticks were inefficient and clunky.</div></div>
+<div class="reveal"><strong>What did Engelbart originally call the cursor-controlling device?</strong><div class="answer">He called it “the bug”.</div></div>
+<div class="reveal"><strong>Who helped Engelbart showcase the mouse?</strong><div class="answer">His fellow inventor Bill English.</div></div>
+<div class="reveal"><strong>Why did Engelbart not profit from future mouse sales?</strong><div class="answer">The Stanford Research Institute owned the original patent.</div></div>
+<div class="reveal"><strong>What role did Steve Jobs play in the story?</strong><div class="answer">He saw the potential of the mouse, pushed Apple engineers to redesign it, and helped relaunch it as an Apple product.</div></div>
+</div>
+<div class="card"><h3>Vocabulary from Part 1</h3><div class="dragArea"><div><p>Some inventions are non-<span class="dropzone" data-ans="starters"></span>.</p><p>Good ideas are harder to come <span class="dropzone" data-ans="by"></span>.</p><p>Engelbart thought he could do <span class="dropzone" data-ans="better"></span>.</p><p>Jobs wanted to streamline and <span class="dropzone" data-ans="relaunch"></span> the mouse.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">starters</span><span class="draggable" draggable="true">better</span><span class="draggable" draggable="true">by</span><span class="draggable" draggable="true">relaunch</span><span class="draggable" draggable="true">behind</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Prep Part 2">
+<div class="card">
+<h2>Prep for Part 2</h2>
+<p class="small">Drag the correct sentence ending into each gap.</p>
+<div class="dragArea">
+<div>
+<div class="matchSentence"><strong>1.</strong> If someone is ahead of their time,... <span class="dropzone matchDrop" data-ans="their ideas are too advanced for their period."></span></div>
+<div class="matchSentence"><strong>2.</strong> If an inventor is undeterred,... <span class="dropzone matchDrop" data-ans="they continue even after rejection or failure."></span></div>
+<div class="matchSentence"><strong>3.</strong> An immersive experience... <span class="dropzone matchDrop" data-ans="makes people feel surrounded by the situation."></span></div>
+<div class="matchSentence"><strong>4.</strong> When someone fails spectacularly,... <span class="dropzone matchDrop" data-ans="they fail in a very obvious or dramatic way."></span></div>
+</div>
+<div class="dragBank">
+<h3>Sentence endings</h3>
+<span class="draggable" draggable="true">they fail in a very obvious or dramatic way.</span>
+<span class="draggable" draggable="true">their ideas are too advanced for their period.</span>
+<span class="draggable" draggable="true">makes people feel surrounded by the situation.</span>
+<span class="draggable" draggable="true">they continue even after rejection or failure.</span>
+</div>
+</div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Watch Part 2">
+<div class="card"><h2>Watch Part 2</h2><p>Watch from about 1:54 to the end. Focus on Kevlar, Sensorama, virtual reality, the pacemaker and accidental discovery.</p><a class="video-thumb" href="https://www.youtube.com/watch?v=b9qZWG-07M8&amp;t=114s" target="_blank"><img alt="YouTube screen grab" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/b9qZWG-07M8/hqdefault.jpg';" src="https://img.youtube.com/vi/b9qZWG-07M8/maxresdefault.jpg"/><div class="video-meta"><strong>Part 2:</strong> brilliant discoveries, wrong timing, accidental invention and learning from failure.</div></a><a class="btn" href="https://www.youtube.com/watch?v=b9qZWG-07M8&amp;t=114s" target="_blank">Watch Part 2 on YouTube</a></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 2">
+<div class="card"><h2>Comprehension 2</h2><p class="small">Click each question to reveal the answer.</p>
+<div class="reveal"><strong>What did Stephanie Kwolek invent?</strong><div class="answer">Kevlar, a material stronger than steel but as light as fiberglass.</div></div>
+<div class="reveal"><strong>Why did Kwolek’s colleagues refuse to spin the liquid at first?</strong><div class="answer">They feared it would clog up their machines.</div></div>
+<div class="reveal"><strong>What was the Sensorama designed to do?</strong><div class="answer">It was designed to create an immersive, sensory cinema experience using 3D video, vibration, wind and smell.</div></div>
+<div class="reveal"><strong>Why was Morton Heilig’s idea unsuccessful at the time?</strong><div class="answer">Nobody wanted to buy it, even though it anticipated later virtual reality technology.</div></div>
+<div class="reveal"><strong>How did Wilson Greatbatch invent the pacemaker?</strong><div class="answer">He accidentally used the wrong resistor, and his machine began giving out an electrical pulse of its own.</div></div>
+</div>
+<div class="card"><h3>Vocabulary from Part 2</h3><div class="dragArea"><div><p>Kwolek discovered a material stronger <span class="dropzone" data-ans="than steel"></span>.</p><p>Heilig had grand <span class="dropzone" data-ans="ambitions"></span>.</p><p>He was <span class="dropzone" data-ans="undeterred"></span> after Sensorama failed.</p><p>Greatbatch accidentally invented the <span class="dropzone" data-ans="pacemaker"></span>.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">than steel</span><span class="draggable" draggable="true">undeterred</span><span class="draggable" draggable="true">pacemaker</span><span class="draggable" draggable="true">ambitions</span><span class="draggable" draggable="true">tarpaulin</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Vocabulary Review">
+<div class="card"><h2>Vocabulary Review</h2><table class="table"><tr><th>Word / phrase</th><th>Meaning</th><th>Example</th></tr><tr><td>non-starter</td><td>an idea with little chance of success</td><td>The underwater hair dryer is clearly a non-starter.</td></tr><tr><td>come by</td><td>find or obtain</td><td>Truly original ideas are hard to come by.</td></tr><tr><td>clunky</td><td>awkward, heavy or badly designed</td><td>Early computer controls were clunky.</td></tr><tr><td>showcase</td><td>present something publicly</td><td>Engelbart showcased the mouse to a large crowd.</td></tr><tr><td>streamline</td><td>make simpler and more efficient</td><td>Apple streamlined the mouse for ordinary users.</td></tr><tr><td>ahead of his time</td><td>having ideas too advanced for the period</td><td>Heilig was ahead of his time.</td></tr><tr><td>undeterred</td><td>not discouraged by failure</td><td>He was undeterred and patented another device.</td></tr><tr><td>immersive</td><td>creating a strong feeling of being inside an experience</td><td>Sensorama offered an immersive cinema experience.</td></tr><tr><td>clog up</td><td>block a machine or passage</td><td>The liquid might clog up the machines.</td></tr><tr><td>fail spectacularly</td><td>fail in a dramatic or obvious way</td><td>Greatbatch failed spectacularly but discovered something useful.</td></tr></table></div>
+<div class="card"><h3>Collocations and Expressions</h3><div class="dragArea"><div><p>a brilliant <span class="dropzone" data-ans="idea"></span></p><p>cutting-edge <span class="dropzone" data-ans="technology"></span></p><p>commercial <span class="dropzone" data-ans="potential"></span></p><p>grand <span class="dropzone" data-ans="ambitions"></span></p><p>the right idea at the wrong <span class="dropzone" data-ans="time"></span></p><p>an accidental <span class="dropzone" data-ans="discovery"></span></p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">technology</span><span class="draggable" draggable="true">time</span><span class="draggable" draggable="true">discovery</span><span class="draggable" draggable="true">idea</span><span class="draggable" draggable="true">potential</span><span class="draggable" draggable="true">ambitions</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Grammar">
+<div class="card"><h2>B2/C1 Grammar: Third Conditionals and Mixed Conditionals</h2><p>This grammar section uses the stories from the video to practise unreal past situations and their possible consequences.</p><table class="table"><tr><th>Structure</th><th>Use</th><th>Example</th></tr><tr><td>Third conditional</td><td>imagining a different past result</td><td>If Xerox had kept control of the idea, Apple might not have relaunched the mouse so successfully.</td></tr><tr><td>Mixed conditional: past condition + present result</td><td>imagining how a different past would affect the present</td><td>If Heilig had found investors, he might be remembered as a founder of modern VR.</td></tr><tr><td>Mixed conditional: present condition + past result</td><td>imagining how a general present truth could have changed the past</td><td>If companies were more open to strange ideas, the Sensorama might have succeeded.</td></tr></table></div>
+<div class="card"><h3>Grammar Exercise 1: Complete the third conditionals</h3><div class="dragArea"><div><p>If Engelbart had owned the patent, he <span class="dropzone" data-ans="might have profited"></span> from the mouse.</p><p>If Kwolek’s colleagues had refused permanently, Kevlar <span class="dropzone" data-ans="might not have developed"></span> so quickly.</p><p>If Greatbatch had used the correct resistor, he <span class="dropzone" data-ans="might not have invented"></span> the pacemaker.</p><p>If Henry Ford had bought the Sensorama, immersive cinema <span class="dropzone" data-ans="could have become"></span> popular earlier.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">might have profited</span><span class="draggable" draggable="true">might not have invented</span><span class="draggable" draggable="true">could have become</span><span class="draggable" draggable="true">might not have developed</span><span class="draggable" draggable="true">would become</span></div></div></div>
+<div class="card"><h3>Grammar Exercise 2: Mixed conditionals</h3><div class="dragArea"><div><p>If Engelbart had become famous for the mouse, more people <span class="dropzone" data-ans="would know"></span> his name today.</p><p>If Heilig had found the right audience, VR <span class="dropzone" data-ans="might be"></span> older as a mass-market industry.</p><p>If Jobs had not had such a strong personality, the mouse <span class="dropzone" data-ans="might not be"></span> so closely linked with Apple now.</p><p>If companies were less risk-averse, Kwolek’s discovery <span class="dropzone" data-ans="might have been accepted"></span> more quickly.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">would know</span><span class="draggable" draggable="true">might be</span><span class="draggable" draggable="true">might not be</span><span class="draggable" draggable="true">might have been accepted</span><span class="draggable" draggable="true">will be accepted</span></div></div></div>
+<div class="card"><h3>Grammar Exercise 3: Click to reveal the correction</h3><div class="reveal"><strong>If Engelbart would have owned the patent, he would have made money.</strong><div class="answer">If Engelbart had owned the patent, he would have made money.</div></div><div class="reveal"><strong>If Heilig found investors, he would have become successful earlier.</strong><div class="answer">If Heilig had found investors, he would have become successful earlier.</div></div><div class="reveal"><strong>If the Sensorama had succeeded, Heilig would be famous today.</strong><div class="answer">Correct. This is a mixed conditional: past condition + present result.</div></div><div class="reveal"><strong>If Greatbatch didn’t make a mistake, he might not have invented the pacemaker.</strong><div class="answer">If Greatbatch had not made a mistake, he might not have invented the pacemaker.</div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Discussion">
+<div class="card"><h2>Discussion</h2><ol><li>Which inventor in the video deserved more recognition?</li><li>Is timing more important than talent in business?</li><li>Should companies take more risks with strange new ideas?</li><li>Can failure be useful if it leads to a new discovery?</li><li>What invention today might be “too early” for the market?</li><li>Would you rather be the inventor of an idea or the person who makes it popular?</li></ol></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Role Play">
+<div class="card"><h2>Role Play: Pitching an Idea Before Its Time</h2><div class="prompt"><strong>Situation:</strong> One student is an inventor with a brilliant but unusual idea. The other student is an investor who is not sure the market is ready.</div><div class="role"><div class="person"><h3>Student A: Inventor</h3><p>Explain what your invention does, why it matters and what could happen if investors support it now.</p></div><div class="person"><h3>Student B: Investor</h3><p>Ask difficult questions about timing, cost, demand, risk and whether customers are ready.</p></div></div><h3>Challenge</h3><p>Use at least two third conditionals or mixed conditionals during the role play.</p></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><span></span></div>
+</section>
+<footer>ESL CONNECT • Interactive video lesson</footer>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.page')],nav=document.getElementById('nav');
+pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=p.dataset.title;if(i==0)b.classList.add('active');b.onclick=()=>showPage(i);nav.appendChild(b)});
+function showPage(n){pages.forEach((p,i)=>{p.classList.toggle('active',i==n);nav.children[i].classList.toggle('active',i==n)});scrollTo({top:0,behavior:'smooth'})}
+function nextPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c<pages.length-1)showPage(c+1)}
+function prevPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c>0)showPage(c-1)}
+document.querySelectorAll('.reveal').forEach(box=>box.addEventListener('click',()=>box.classList.toggle('open')));
+let draggedWord=null;
+document.addEventListener('dragstart',e=>{if(e.target.classList.contains('draggable'))draggedWord=e.target.textContent.trim()});
+document.addEventListener('dragover',e=>{if(e.target.classList.contains('dropzone'))e.preventDefault()});
+document.addEventListener('drop',e=>{if(e.target.classList.contains('dropzone')){e.preventDefault();e.target.textContent=draggedWord||'';e.target.classList.add('filled');let ok=e.target.textContent.trim()===e.target.dataset.ans;e.target.classList.toggle('correct',ok);e.target.classList.toggle('incorrect',!ok)}});
+function checkMatching(setName){
+  const box=document.querySelector(`[data-match-set="${setName}"]`);
+  if(!box)return;
+  const items=[...box.querySelectorAll('.matchItem')];
+  let correct=0;
+  items.forEach(item=>{
+    const select=item.querySelector('select');
+    const ok=select.value===item.dataset.answer;
+    item.classList.toggle('correctChoice',ok);
+    item.classList.toggle('incorrectChoice',select.value!=='' && !ok);
+    if(ok)correct++;
+  });
+  const fb=document.getElementById(setName+'Feedback');
+  if(fb){fb.textContent=`${correct} / ${items.length} correct`;fb.style.color=correct===items.length?'var(--good)':'var(--bad)';}
+}
+showPage(0);
+</script>
+</body>
+</html>

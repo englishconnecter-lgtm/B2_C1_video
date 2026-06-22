@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>ESL CONNECT | Memory Triggers</title><style>
+:root{--blue:#0b2f5b;--blue2:#114f95;--yellow:#f4d547;--bg:#f4f7fb;--text:#1e2a38;--muted:#5f7085;--line:#d8e0ea;--good:#1b8f3d;--bad:#c43d34}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrapper{max-width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;gap:18px;align-items:center}.logo{width:84px;height:84px;background:#fff;color:var(--blue);border:3px solid #fff5b7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;line-height:1.05;text-decoration:none}header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;background:#eaf0f8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav button{border:none;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700}nav button.active,nav button:hover{background:var(--yellow);color:#18263a}
+.page{display:none;padding:24px}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}@media(max-width:900px){.grid,.dragArea,.role{grid-template-columns:1fr!important}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 3px 12px rgba(15,47,106,.06)}.card h2,.card h3{margin-top:0;color:var(--blue)}.note{background:#fffbe6;border-left:5px solid var(--yellow);padding:12px 14px;border-radius:8px}.small{color:var(--muted);font-size:14px}
+.heroImg,.videoImg{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.08)}.heroImg{height:330px;object-fit:cover}.video-thumb{text-decoration:none;color:inherit}.video-meta{padding:12px 0}.btn{display:inline-block;margin-top:10px;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700}
+.exercise{border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}.question{margin-top:0}.choice{display:block;margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;background:#fff}.choice:hover{background:#f8fbff}.feedback{min-height:24px;font-weight:700;margin-top:8px}.exercise.correct .feedback{color:var(--good)}.exercise.incorrect .feedback{color:var(--bad)}
+.dragArea{display:grid;grid-template-columns:1fr 290px;gap:18px}.dropzone{display:inline-block;min-width:150px;min-height:34px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:5px 10px}.dropzone.filled{border-style:solid;background:#eef6ff;font-weight:700}.dropzone.correct{border-color:#167a46;background:#f0fdf4}.dropzone.incorrect{border-color:#b91c1c;background:#fef2f2}.draggable{background:#e8f0fb;border:1px solid #c7d7ee;border-radius:999px;padding:8px 11px;font-weight:700;color:#0b2f5b;cursor:grab;display:inline-block;margin:5px}.dragBank{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px}
+.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.table th{background:#eef4fb}.role{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:16px}.prompt{background:#f0f7ff;border:1px solid #cce1ff;border-radius:10px;padding:14px;margin:12px 0}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.controls button{border:none;background:var(--blue2);color:#fff;padding:11px 16px;border-radius:8px;cursor:pointer}.controls button:hover{background:var(--yellow);color:#18263a}footer{padding:18px 24px 28px;color:var(--muted);text-align:center}
+
+.choice.correctChoice{
+  background:#f0fdf4 !important;
+  border-color:#167a46 !important;
+  color:#14532d !important;
+  font-weight:700;
+}
+.choice.incorrectChoice{
+  background:#fef2f2 !important;
+  border-color:#b91c1c !important;
+  color:#7f1d1d !important;
+  font-weight:700;
+}
+
+
+
+/* Prep Part 1 / Prep Part 2 sentence-completion drag-and-drop */
+.matchSentence{
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #d8e1ef;
+  border-radius:10px;
+  background:#fff;
+  overflow:visible!important;
+}
+.matchSentence strong{color:#0b2f5b}
+.matchDrop{
+  display:block;
+  min-height:42px;
+  margin-top:8px;
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:9px 12px!important;
+  line-height:1.45!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-indent:0!important;
+  text-align:left!important;
+}
+.page .dragArea{grid-template-columns:minmax(0,1fr) 340px}
+.page .dragBank{box-sizing:border-box;padding:16px 18px!important;overflow:visible!important}
+.page .dragBank .draggable{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  margin:8px 0!important;
+  padding:12px 16px 13px 20px!important;
+  border-radius:10px!important;
+  line-height:1.45!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  text-indent:0!important;
+  text-align:left!important;
+  transform:none!important;
+}
+@media(max-width:900px){.page .dragArea{grid-template-columns:1fr!important}}
+footer a{color:inherit;text-decoration:none}
+</style></head><body><div class="wrapper"><header><a class="logo" href="https://www.eslconnect.net/" target="_blank">ESL<br/>CONNECT</a><div><h1>Memory Triggers and False Memories</h1><p>B2/C1 video lesson on episodic memory, sensory cues, false memories and reminiscence therapy.</p><p class="small"><a href="https://www.youtube.com/watch?v=BU-4pSkIIL4" style="color:#fff2a8" target="_blank">Open video on YouTube</a></p></div></header><nav id="nav"></nav>
+<section class="page active" data-title="Start">
+<div class="grid"><div class="card"><h2>Lesson Overview</h2>
+<p>Students watch a Life Noggin video about how memories are triggered by smells, sounds and pictures, and why memories are not always reliable.</p>
+<h3>Before you watch</h3><ol><li>What smells or sounds remind you of the past?</li><li>Do photos always help us remember things accurately?</li><li>Why might our memory sometimes change over time?</li></ol></div>
+<div class="card"><h2>Memory Triggers</h2><img alt="Stock-style illustration about memory and the brain" class="heroImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/BU-4pSkIIL4/hqdefault.jpg';" src="https://img.youtube.com/vi/BU-4pSkIIL4/maxresdefault.jpg"/><p><a class="btn" href="https://www.youtube.com/watch?v=BU-4pSkIIL4" target="_blank">Open video on YouTube</a></p></div></div>
+<div class="controls"><span></span><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Prep Part 1"><div class="card"><h2>Prep Part 1</h2><p class="small">Drag the correct sentence ending into each gap.</p><div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If someone recalls an episodic memory,... <span class="dropzone matchDrop" data-ans="they mentally travel back to a specific past event."></span></div><div class="matchSentence"><strong>2.</strong> If something triggers a memory,... <span class="dropzone matchDrop" data-ans="it causes a memory to appear in your mind."></span></div><div class="matchSentence"><strong>3.</strong> If the olfactory bulb is involved,... <span class="dropzone matchDrop" data-ans="the brain is processing smells."></span></div><div class="matchSentence"><strong>4.</strong> If a memory is vivid,... <span class="dropzone matchDrop" data-ans="it is clear, detailed and strong."></span></div><div class="matchSentence"><strong>5.</strong> If a smell brings back a memory,... <span class="dropzone matchDrop" data-ans="it makes a past experience return to mind."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">it makes a past experience return to mind.</span><span class="draggable" draggable="true">it causes a memory to appear in your mind.</span><span class="draggable" draggable="true">they mentally travel back to a specific past event.</span><span class="draggable" draggable="true">it is clear, detailed and strong.</span><span class="draggable" draggable="true">the brain is processing smells.</span></div></div></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Watch Part 1"><div class="card"><h2>Watch Part 1</h2><p>Watch from 0:00 to about 1:33. Focus on memory triggers, smells, episodic memory and the brain.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=BU-4pSkIIL4" target="_blank"><img alt="Memory illustration for watch section" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/BU-4pSkIIL4/hqdefault.jpg';" src="https://img.youtube.com/vi/BU-4pSkIIL4/maxresdefault.jpg"/><div class="video-meta"><strong>Part 1:</strong> Smells, sounds, episodic memories and the brain.</div></a>
+<a class="btn" href="https://www.youtube.com/watch?v=BU-4pSkIIL4" target="_blank">Watch Part 1 on YouTube</a></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Comprehension 1"><div class="card"><h2>Comprehension 1</h2>
+<div class="exercise mcq" data-answer="C">
+<p class="question"><strong>What examples does the video give of documenting life?</strong></p>
+<div class="choices"><label class="choice"><input name="c1a" type="radio" value="A"/> <span>weather forecasts and maps</span></label><label class="choice"><input name="c1a" type="radio" value="B"/> <span>court records and bank forms</span></label><label class="choice"><input name="c1a" type="radio" value="C"/> <span>social media photos, YouTube vlogs and scrapbooks</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="C">
+<p class="question"><strong>What can smells and sounds do?</strong></p>
+<div class="choices"><label class="choice"><input name="c1b" type="radio" value="A"/> <span>erase all memories</span></label><label class="choice"><input name="c1b" type="radio" value="B"/> <span>make people stop dreaming</span></label><label class="choice"><input name="c1b" type="radio" value="C"/> <span>trigger certain memories</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="B">
+<p class="question"><strong>Why are odors powerful memory triggers?</strong></p>
+<div class="choices"><label class="choice"><input name="c1c" type="radio" value="A"/> <span>Smells are processed only by the eyes.</span></label><label class="choice"><input name="c1c" type="radio" value="B"/> <span>The olfactory bulb is connected to structures involved in memory and emotion.</span></label><label class="choice"><input name="c1c" type="radio" value="C"/> <span>Odors stop the hippocampus working.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="B">
+<p class="question"><strong>Which brain structure is involved in storing long-term memories?</strong></p>
+<div class="choices"><label class="choice"><input name="c1d" type="radio" value="A"/> <span>the lungs</span></label><label class="choice"><input name="c1d" type="radio" value="B"/> <span>the hippocampus</span></label><label class="choice"><input name="c1d" type="radio" value="C"/> <span>the kneecap</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+</div><div class="card"><h3>Vocabulary from Part 1</h3><div class="dragArea"><div>
+<p>People document their lives in <span class="dropzone" data-ans="unique"></span> ways.</p>
+<p>A smell can <span class="dropzone" data-ans="trigger"></span> a memory.</p>
+<p>Episodic memories let you mentally travel back in <span class="dropzone" data-ans="time"></span>.</p>
+<p>Odors can create vivid and emotional <span class="dropzone" data-ans="memories"></span>.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">memories</span><span class="draggable" draggable="true">unique</span><span class="draggable" draggable="true">jurisdictions</span><span class="draggable" draggable="true">time</span><span class="draggable" draggable="true">trigger</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Prep Part 2"><div class="card"><h2>Prep Part 2</h2><p class="small">Drag the correct sentence ending into each gap.</p><div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If someone has a false memory,... <span class="dropzone matchDrop" data-ans="they remember something that did not actually happen."></span></div><div class="matchSentence"><strong>2.</strong> If a photo is doctored,... <span class="dropzone matchDrop" data-ans="it has been edited or manipulated."></span></div><div class="matchSentence"><strong>3.</strong> If reminiscence therapy is used,... <span class="dropzone matchDrop" data-ans="photos, music or stories help people talk about past experiences."></span></div><div class="matchSentence"><strong>4.</strong> If a picture cues a memory,... <span class="dropzone matchDrop" data-ans="it helps a person remember something."></span></div><div class="matchSentence"><strong>5.</strong> If people remember an event in detail,... <span class="dropzone matchDrop" data-ans="they describe it with many specific features."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">they remember something that did not actually happen.</span><span class="draggable" draggable="true">it has been edited or manipulated.</span><span class="draggable" draggable="true">they describe it with many specific features.</span><span class="draggable" draggable="true">it helps a person remember something.</span><span class="draggable" draggable="true">photos, music or stories help people talk about past experiences.</span></div></div></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Watch Part 2"><div class="card"><h2>Watch Part 2</h2><p>Watch from about 1:33 to the end. Focus on photos, false memories, dementia and reminiscence therapy.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=BU-4pSkIIL4&amp;t=93s" target="_blank"><img alt="Memory illustration for watch section" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/BU-4pSkIIL4/hqdefault.jpg';" src="https://img.youtube.com/vi/BU-4pSkIIL4/maxresdefault.jpg"/><div class="video-meta"><strong>Part 2:</strong> Photos, false memories and reminiscence therapy.</div></a>
+<a class="btn" href="https://www.youtube.com/watch?v=BU-4pSkIIL4&amp;t=93s" target="_blank">Watch Part 2 on YouTube</a></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Comprehension 2"><div class="card"><h2>Comprehension 2</h2>
+<div class="exercise mcq" data-answer="A">
+<p class="question"><strong>What did the early 2000s study show participants?</strong></p>
+<div class="choices"><label class="choice"><input name="c2a" type="radio" value="A"/> <span>three real childhood photos and one Photoshopped hot-air balloon photo</span></label><label class="choice"><input name="c2a" type="radio" value="B"/> <span>one smell and one sound</span></label><label class="choice"><input name="c2a" type="radio" value="C"/> <span>only newspaper headlines</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="A">
+<p class="question"><strong>By the end of the study, what did some subjects do?</strong></p>
+<div class="choices"><label class="choice"><input name="c2b" type="radio" value="A"/> <span>They remembered the fake balloon ride in detail.</span></label><label class="choice"><input name="c2b" type="radio" value="B"/> <span>They refused to look at any photos.</span></label><label class="choice"><input name="c2b" type="radio" value="C"/> <span>They forgot all their real childhood memories.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="C">
+<p class="question"><strong>What did the 2011 study suggest about photos and fake headlines?</strong></p>
+<div class="choices"><label class="choice"><input name="c2c" type="radio" value="A"/> <span>Photos always prove that a story is true.</span></label><label class="choice"><input name="c2c" type="radio" value="B"/> <span>Fake headlines are easier to detect with photos.</span></label><label class="choice"><input name="c2c" type="radio" value="C"/> <span>Photos can make people feel more confident that they remember a fake event.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="C">
+<p class="question"><strong>How can pictures help people with dementia?</strong></p>
+<div class="choices"><label class="choice"><input name="c2d" type="radio" value="A"/> <span>They can cure dementia immediately.</span></label><label class="choice"><input name="c2d" type="radio" value="B"/> <span>They stop people from talking about the past.</span></label><label class="choice"><input name="c2d" type="radio" value="C"/> <span>They can cue memories in reminiscence therapy.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+</div><div class="card"><h3>Vocabulary from Part 2</h3><div class="dragArea"><div>
+<p>A Photoshopped image can create a false <span class="dropzone" data-ans="memory"></span>.</p>
+<p>Some people described the fake event in great <span class="dropzone" data-ans="detail"></span>.</p>
+<p>Photos can make people feel <span class="dropzone" data-ans="confident"></span> about a memory.</p>
+<p>Reminiscence therapy may improve mood and <span class="dropzone" data-ans="cognition"></span>.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">memory</span><span class="draggable" draggable="true">monopoly</span><span class="draggable" draggable="true">detail</span><span class="draggable" draggable="true">cognition</span><span class="draggable" draggable="true">confident</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Vocabulary Review"><div class="card"><h2>Vocabulary Review</h2>
+<table class="table"><tr><th>Word / phrase</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>document your life</td><td>record experiences through photos, videos or writing</td><td>People document their lives on social media.</td></tr>
+<tr><td>trigger a memory</td><td>cause a memory to return</td><td>A smell can trigger a childhood memory.</td></tr>
+<tr><td>episodic memory</td><td>a memory of a specific personal event</td><td>Remembering a holiday is an episodic memory.</td></tr>
+<tr><td>vivid</td><td>clear, detailed and strong</td><td>Odors can create vivid memories.</td></tr>
+<tr><td>false memory</td><td>a memory of something that did not happen</td><td>The doctored photo created a false memory.</td></tr>
+<tr><td>reminiscence therapy</td><td>using cues to help people talk about past experiences</td><td>Photos and music can be used in reminiscence therapy.</td></tr></table></div>
+<div class="card"><h3>Phrasal Verbs and Expressions</h3><div class="dragArea"><div>
+<p>Photos help people look <span class="dropzone" data-ans="back at"></span> life events.</p>
+<p>A smell can bring <span class="dropzone" data-ans="back"></span> a memory.</p>
+<p>People can be taken <span class="dropzone" data-ans="back to"></span> a moment in the past.</p>
+<p>Researchers found <span class="dropzone" data-ans="out"></span> that photos can affect memory.</p>
+<p>Music can help cue <span class="dropzone" data-ans="up"></span> memories.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">back at</span><span class="draggable" draggable="true">down</span><span class="draggable" draggable="true">back</span><span class="draggable" draggable="true">back to</span><span class="draggable" draggable="true">out</span><span class="draggable" draggable="true">up</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Grammar"><div class="card"><h2>B2/C1 Grammar: Reported Speech for Memory Research</h2>
+<p>This section practises reported speech for summarising studies and scientific claims.</p>
+<div class="exercise mcq" data-answer="C">
+<p class="question"><strong>Direct speech: “Odors are powerful memory triggers.” Reported speech:</strong></p>
+<div class="choices"><label class="choice"><input name="g1" type="radio" value="A"/> <span>The video asked odors are powerful memory triggers.</span></label><label class="choice"><input name="g1" type="radio" value="B"/> <span>The video explained odors be powerful triggers.</span></label><label class="choice"><input name="g1" type="radio" value="C"/> <span>The video explained that odors were powerful memory triggers.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="B">
+<p class="question"><strong>Direct speech: “The subjects remembered the balloon ride.” Reported speech:</strong></p>
+<div class="choices"><label class="choice"><input name="g2" type="radio" value="A"/> <span>The study asked that the subjects remembered the balloon ride.</span></label><label class="choice"><input name="g2" type="radio" value="B"/> <span>The study showed that the subjects had remembered the balloon ride.</span></label><label class="choice"><input name="g2" type="radio" value="C"/> <span>The study showed the subjects will remember the ride.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+</div><div class="card"><h3>Reported Speech in Context</h3><div class="dragArea"><div>
+<p>The video said that people <span class="dropzone" data-ans="documented"></span> their lives in many ways.</p>
+<p>The narrator explained that smells <span class="dropzone" data-ans="could trigger"></span> memories.</p>
+<p>The study showed that some subjects <span class="dropzone" data-ans="had remembered"></span> a fake event.</p>
+<p>Researchers found that photos <span class="dropzone" data-ans="could influence"></span> memory confidence.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">will influence</span><span class="draggable" draggable="true">documented</span><span class="draggable" draggable="true">could influence</span><span class="draggable" draggable="true">had remembered</span><span class="draggable" draggable="true">could trigger</span></div></div></div>
+<div class="card"><h3>Useful Patterns</h3><table class="table"><tr><th>Direct speech</th><th>Reported speech</th></tr><tr><td>“Smells trigger memories.”</td><td>The speaker said that smells triggered memories.</td></tr><tr><td>“The photo was fake.”</td><td>The researchers explained that the photo had been fake.</td></tr><tr><td>“Can pictures improve memory?”</td><td>The study asked whether pictures could improve memory.</td></tr></table><div class="prompt"><strong>Task:</strong> Summarise the two studies using four reported-speech sentences.</div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Thought-Provoking Questions"><div class="card"><h2>Thought-Provoking Questions</h2><ol>
+<li>Are photos always reliable evidence of the past?</li><li>Can social media change the way we remember our lives?</li><li>Why might smells be stronger memory triggers than photos?</li><li>Should people worry about false memories?</li><li>How could memory cues help elderly people or people with dementia?</li><li>Would you want to perfectly record every moment of your life?</li></ol></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Role Play"><div class="card"><h2>Role Play</h2><div class="prompt"><strong>Situation:</strong> A researcher is explaining memory triggers to a podcast host.</div><div class="role"><div class="person"><h3>Student A: Memory researcher</h3><p>Explain episodic memory, smell triggers, false memories and the role of photos.</p></div><div class="person"><h3>Student B: Podcast host</h3><p>Ask questions about whether memories can be trusted and how memory cues can help people.</p></div></div><h3>Useful language</h3><table class="table"><tr><th>Explaining research</th><th>Asking questions</th></tr><tr><td>The evidence suggests that...<br/>One possible explanation is...<br/>The study showed that...</td><td>Does that mean that...?<br/>How reliable is...?<br/>Could this help people who...?</td></tr></table></div><div class="controls"><button onclick="prevPage()">Previous</button><span></span></div></section>
+<footer>ESL CONNECT • Interactive lesson • <a href="mailto:englishconnecter@gmail.com" style="color:inherit;text-decoration:none;">Contact US</a></footer></div><script>
+const pages=[...document.querySelectorAll('.page')];const nav=document.getElementById('nav');pages.forEach((page,i)=>{const btn=document.createElement('button');btn.textContent=page.dataset.title||`Page ${i+1}`;if(i===0)btn.classList.add('active');btn.onclick=()=>showPage(i);nav.appendChild(btn);});function showPage(index){pages.forEach((page,i)=>{page.classList.toggle('active',i===index);nav.children[i].classList.toggle('active',i===index);});window.scrollTo({top:0,behavior:'smooth'});}function nextPage(){const c=pages.findIndex(p=>p.classList.contains('active'));if(c<pages.length-1)showPage(c+1)}function prevPage(){const c=pages.findIndex(p=>p.classList.contains('active'));if(c>0)showPage(c-1)}
+document.querySelectorAll('.mcq').forEach(box=>{
+  const answer=box.dataset.answer;
+  const fb=box.querySelector('.feedback');
+  box.querySelectorAll('input[type=radio]').forEach(input=>{
+    input.addEventListener('change',()=>{
+      box.querySelectorAll('.choice').forEach(label=>{
+        label.classList.remove('correctChoice','incorrectChoice');
+      });
+      const selectedLabel=input.closest('.choice');
+      if(input.value===answer){
+        box.classList.add('correct');
+        box.classList.remove('incorrect');
+        selectedLabel.classList.add('correctChoice');
+        fb.textContent='Correct';
+      }else{
+        box.classList.add('incorrect');
+        box.classList.remove('correct');
+        selectedLabel.classList.add('incorrectChoice');
+        fb.textContent='Try again';
+      }
+    });
+  });
+});
+let draggedWord=null;document.addEventListener('dragstart',e=>{if(e.target.classList.contains('draggable'))draggedWord=e.target.textContent.trim()});document.addEventListener('dragover',e=>{if(e.target.classList.contains('dropzone'))e.preventDefault()});document.addEventListener('drop',e=>{if(e.target.classList.contains('dropzone')){e.preventDefault();e.target.textContent=draggedWord||'';e.target.classList.add('filled');let ok=e.target.textContent.trim()===e.target.dataset.ans;e.target.classList.toggle('correct',ok);e.target.classList.toggle('incorrect',!ok);}});showPage(0);
+</script></body></html>

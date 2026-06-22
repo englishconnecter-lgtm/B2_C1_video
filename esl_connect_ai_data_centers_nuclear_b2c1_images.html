@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ESL CONNECT | AI and Nuclear Power</title><style>
+:root{--blue:#0b2f5b;--blue2:#114f95;--yellow:#f4d547;--bg:#f4f7fb;--text:#1e2a38;--muted:#5f7085;--line:#d8e0ea;--good:#1b8f3d;--bad:#c43d34}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrapper{max-width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;gap:18px;align-items:center}.logo{width:84px;height:84px;background:#fff;color:var(--blue);border:3px solid #fff5b7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;line-height:1.05;text-decoration:none;flex:0 0 auto}header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;background:#eaf0f8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav button{border:none;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700}nav button.active,nav button:hover{background:var(--yellow);color:#18263a}
+.page{display:none;padding:24px}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}@media(max-width:900px){.grid,.dragArea,.role{grid-template-columns:1fr!important}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 3px 12px rgba(15,47,106,.06)}.card h2,.card h3{margin-top:0;color:var(--blue)}.small{color:var(--muted);font-size:14px}
+.heroImg,.videoImg{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#f8fafc;box-shadow:0 6px 14px rgba(0,0,0,.08)}.heroImg{height:330px;object-fit:cover}.video-thumb{text-decoration:none;color:inherit}.video-meta{padding:12px 0}.btn{display:inline-block;margin-top:10px;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700;border:none;cursor:pointer}.btn:hover{background:var(--yellow);color:#18263a}
+.reveal{border:1px solid var(--line);border-radius:12px;padding:15px;margin:14px 0;background:#fff;cursor:pointer}.reveal:hover{background:#f8fbff}.reveal .answer{display:none;margin-top:10px;padding:12px;border-left:4px solid var(--yellow);background:#fffbe6;border-radius:8px}.reveal.open .answer{display:block}.reveal strong{color:var(--blue)}
+.dragArea{display:grid;grid-template-columns:1fr 300px;gap:18px}.dropzone{display:inline-block;min-width:150px;min-height:34px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:5px 10px;vertical-align:middle}.dropzone.filled{border-style:solid;background:#eef6ff;font-weight:700}.dropzone.correct{border-color:#167a46;background:#f0fdf4;color:#14532d}.dropzone.incorrect{border-color:#b91c1c;background:#fef2f2;color:#7f1d1d}.matchDrop{display:block;min-height:42px;margin-top:8px}.matchSentence{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.matchSentence strong{color:var(--blue)}
+.draggable{background:#e8f0fb;border:1px solid #c7d7ee;border-radius:999px;padding:8px 11px;font-weight:700;color:#0b2f5b;cursor:grab;display:inline-block;margin:5px}.dragBank{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px}.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.table th{background:#eef4fb}.role{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:16px}.prompt{background:#f0f7ff;border:1px solid #cce1ff;border-radius:10px;padding:14px;margin:12px 0}.checkline{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.checkline input{width:100%;padding:10px;border:1px solid #c8d5e6;border-radius:8px;margin-top:8px}.result{font-weight:700;margin-top:8px;min-height:22px}.correctText{color:var(--good)}.incorrectText{color:var(--bad)}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.controls button{border:none;background:var(--blue2);color:#fff;padding:11px 16px;border-radius:8px;cursor:pointer}.controls button:hover{background:var(--yellow);color:#18263a}footer{padding:18px 24px 28px;color:var(--muted);text-align:center}
+</style></head>
+<body><div class="wrapper"><header><a class="logo" href="https://www.eslconnect.net/" target="_blank">ESL<br>CONNECT</a><div><h1>AI, Data Centers and Nuclear Power</h1><p>B2/C1 business technology lesson on energy demand, Big Tech and nuclear investment. Content ends at Chapter 3.</p><p class="small"><a style="color:#fff2a8" href="https://www.youtube.com/watch?v=58zHJL1dKtw" target="_blank">Open video on YouTube</a></p></div></header><nav id="nav"></nav>
+
+<section class="page active" data-title="Start">
+<div class="grid">
+<div class="card"><h2>Lesson Overview</h2><p>Students watch a technology and energy video about why Big Tech is investing in nuclear power. The lesson focuses on AI, data centers, electricity demand, energy security, clean baseload power and small modular reactors. The video content is used up to Chapter 3.</p>
+<h3>Before you watch</h3><ol><li>Why do AI systems need so much electricity?</li><li>Should tech companies invest directly in energy production?</li><li>Is nuclear power a good solution for data centers?</li></ol></div>
+<div class="card"><h2>Video</h2><img class="heroImg" src="https://img.youtube.com/vi/58zHJL1dKtw/hqdefault.jpg" alt="YouTube screen grab"><p><a class="btn" href="https://www.youtube.com/watch?v=58zHJL1dKtw" target="_blank">Open video on YouTube</a></p></div>
+</div><div class="controls"><span></span><button onclick="nextPage()">Next</button></div></section>
+
+<section class="page" data-title="Prep Part 1">
+<div class="card">
+<h2>Prep Part 1</h2>
+<p class="small">Drag the correct sentence ending into each gap.</p>
+<div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If energy demand escalates,... <span class="dropzone matchDrop" data-ans="it rises quickly and significantly."></span></div><div class="matchSentence"><strong>2.</strong> If a resource is intermittent,... <span class="dropzone matchDrop" data-ans="it is not available all the time."></span></div><div class="matchSentence"><strong>3.</strong> If electricity demand strains the grid,... <span class="dropzone matchDrop" data-ans="the power system is under pressure."></span></div><div class="matchSentence"><strong>4.</strong> If a company plays catch-up,... <span class="dropzone matchDrop" data-ans="it tries to respond after falling behind."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">it is not available all the time.</span><span class="draggable" draggable="true">the power system is under pressure.</span><span class="draggable" draggable="true">it rises quickly and significantly.</span><span class="draggable" draggable="true">it tries to respond after falling behind.</span></div></div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Watch Part 1">
+<div class="card">
+<h2>Watch Part 1</h2>
+<p>Watch from 0:00 to about 3:06. Focus on AI data centers, power demand, energy security and why nuclear returns to the conversation.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=58zHJL1dKtw" target="_blank">
+<img class="videoImg" src="https://img.youtube.com/vi/58zHJL1dKtw/hqdefault.jpg" alt="YouTube screen grab">
+<div class="video-meta"><strong>Watch Part 1:</strong> Watch this part on YouTube.</div>
+</a>
+<a class="btn" href="https://www.youtube.com/watch?v=58zHJL1dKtw" target="_blank">Open video</a>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 1">
+<div class="card"><h2>Comprehension 1</h2><p class="small">Click each question to reveal the answer.</p><div class="reveal"><strong>Why is AI changing the energy conversation?</strong><div class="answer">AI requires huge computing power, which increases electricity demand from data centers.</div></div><div class="reveal"><strong>How much more power can AI require at individual data centers?</strong><div class="answer">The video says AI can escalate power demand by a factor of ten or even 100.</div></div><div class="reveal"><strong>What does the Department of Energy estimate about global electricity demand?</strong><div class="answer">It estimates global electricity demand could rise from a third to three quarters by 2050.</div></div><div class="reveal"><strong>Why did countries start looking at nuclear energy again?</strong><div class="answer">Energy prices, geopolitical volatility and concerns about energy security pushed countries to reconsider nuclear power.</div></div><div class="reveal"><strong>Why is nuclear different from solar and wind?</strong><div class="answer">Solar and wind are intermittent, while nuclear can provide 24/7 baseload emissions-free energy.</div></div></div>
+<div class='card'><h3>Vocabulary from Part 1</h3><div class='dragArea'><div><p>AI has escalated power <span class='dropzone' data-ans='demand'></span>.</p><p>Data centers may need power like entire <span class='dropzone' data-ans='cities'></span>.</p><p>Countries began discussing energy <span class='dropzone' data-ans='security'></span>.</p><p>Solar and wind are intermittent <span class='dropzone' data-ans='resources'></span>.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">demand</span><span class="draggable" draggable="true">cities</span><span class="draggable" draggable="true">security</span><span class="draggable" draggable="true">resources</span><span class="draggable" draggable="true">credits</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Prep Part 2">
+<div class="card">
+<h2>Prep Part 2</h2>
+<p class="small">Drag the correct sentence ending into each gap.</p>
+<div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If a company leads the charge,... <span class="dropzone matchDrop" data-ans="it is one of the first or most active players in a movement."></span></div><div class="matchSentence"><strong>2.</strong> If reactors are brought online,... <span class="dropzone matchDrop" data-ans="they start operating and producing electricity."></span></div><div class="matchSentence"><strong>3.</strong> If something is modular,... <span class="dropzone matchDrop" data-ans="it is built from separate parts that can be combined."></span></div><div class="matchSentence"><strong>4.</strong> If a project has cost overruns,... <span class="dropzone matchDrop" data-ans="it costs more than originally expected."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">they start operating and producing electricity.</span><span class="draggable" draggable="true">it costs more than originally expected.</span><span class="draggable" draggable="true">it is built from separate parts that can be combined.</span><span class="draggable" draggable="true">it is one of the first or most active players in a movement.</span></div></div>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Watch Part 2">
+<div class="card">
+<h2>Watch Part 2</h2>
+<p>Watch from about 3:06 to the end of Chapter 3. Focus on Big Tech nuclear investments, SMRs, timelines and regulatory challenges.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=58zHJL1dKtw&t=186s" target="_blank">
+<img class="videoImg" src="https://img.youtube.com/vi/58zHJL1dKtw/hqdefault.jpg" alt="YouTube screen grab">
+<div class="video-meta"><strong>Watch Part 2:</strong> Watch this part on YouTube.</div>
+</a>
+<a class="btn" href="https://www.youtube.com/watch?v=58zHJL1dKtw&t=186s" target="_blank">Open video</a>
+</div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Comprehension 2">
+<div class="card"><h2>Comprehension 2</h2><p class="small">Click each question to reveal the answer.</p><div class="reveal"><strong>Which tech companies are mentioned as investing in or exploring nuclear power?</strong><div class="answer">Amazon, Microsoft, Google and Meta are mentioned, along with Bill Gates-founded TerraPower.</div></div><div class="reveal"><strong>What is Amazon doing?</strong><div class="answer">Amazon agreed to a nuclear power purchase agreement and is investing over $500 million in nuclear projects.</div></div><div class="reveal"><strong>What is Microsoft doing?</strong><div class="answer">Microsoft is working with Constellation Energy to reopen the Three Mile Island nuclear facility with planned upgrades.</div></div><div class="reveal"><strong>What are SMRs?</strong><div class="answer">SMRs are small modular reactors that are smaller, faster to build and potentially more cost-effective than traditional reactors.</div></div><div class="reveal"><strong>What challenge still remains for SMRs in the U.S.?</strong><div class="answer">There are currently no operational SMRs in the U.S., and regulatory approval remains a challenge.</div></div></div>
+<div class='card'><h3>Vocabulary from Part 2</h3><div class='dragArea'><div><p>Amazon signed a nuclear power purchase <span class='dropzone' data-ans='agreement'></span>.</p><p>Microsoft plans upgrades at Three Mile <span class='dropzone' data-ans='Island'></span>.</p><p>SMRs are small modular <span class='dropzone' data-ans='reactors'></span>.</p><p>There are currently no SMRs operational in the <span class='dropzone' data-ans='U.S.'></span>.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">agreement</span><span class="draggable" draggable="true">Island</span><span class="draggable" draggable="true">reactors</span><span class="draggable" draggable="true">U.S.</span><span class="draggable" draggable="true">gigawatts</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+<section class="page" data-title="Vocabulary Review">
+<div class="card"><h2>Vocabulary Review</h2><table class="table"><tr><th>Word / phrase</th><th>Meaning</th><th>Example</th></tr><tr><td>catalyst</td><td>something that causes an important change</td><td>AI is a catalyst for a new era of energy consumption.</td></tr><tr><td>energy consumption</td><td>the amount of energy used</td><td>Data centers increase energy consumption.</td></tr><tr><td>nuclear renaissance</td><td>renewed interest in nuclear power</td><td>The video describes a nuclear renaissance.</td></tr><tr><td>reshoring</td><td>bringing production back to a country</td><td>Reshoring can increase power demand.</td></tr><tr><td>electrification</td><td>switching systems to run on electricity</td><td>Electrification raises demand for electricity.</td></tr><tr><td>data center</td><td>a facility containing computing servers</td><td>AI data centers need enormous amounts of power.</td></tr><tr><td>energy security</td><td>reliable access to enough energy</td><td>Countries are rethinking energy security.</td></tr><tr><td>renewable energy credit</td><td>a certificate used to claim renewable energy use</td><td>Tech companies used credits to claim renewable use.</td></tr><tr><td>intermittent resource</td><td>an energy source not available all the time</td><td>Wind and solar are intermittent resources.</td></tr><tr><td>baseload power</td><td>steady electricity supply available all the time</td><td>Nuclear provides baseload power.</td></tr><tr><td>power purchase agreement</td><td>a contract to buy electricity</td><td>Amazon signed a nuclear power purchase agreement.</td></tr><tr><td>SMR</td><td>small modular reactor</td><td>SMRs could help scale nuclear power.</td></tr><tr><td>cost overrun</td><td>when a project costs more than planned</td><td>SMRs may reduce cost overruns.</td></tr><tr><td>regulatory approval</td><td>official permission from regulators</td><td>Regulatory approval remains a challenge.</td></tr><tr><td>commercial-scale reactor</td><td>a large reactor built for major electricity production</td><td>Some experts want more commercial-scale reactors.</td></tr></table></div>
+<div class='card'><h3>Collocations and Expressions</h3><div class='dragArea'><div><p>energy <span class='dropzone' data-ans='consumption'></span></p><p>power <span class='dropzone' data-ans='demand'></span></p><p>energy <span class='dropzone' data-ans='security'></span></p><p>renewable energy <span class='dropzone' data-ans='credits'></span></p><p>baseload <span class='dropzone' data-ans='power'></span></p><p>regulatory <span class='dropzone' data-ans='approval'></span></p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">consumption</span><span class="draggable" draggable="true">demand</span><span class="draggable" draggable="true">security</span><span class="draggable" draggable="true">credits</span><span class="draggable" draggable="true">power</span><span class="draggable" draggable="true">approval</span></div></div></div><div class='card'><h3>Phrasal Verb Exercise</h3><div class='dragArea'><div><p>Nuclear power has come back <span class='dropzone' data-ans='into'></span> the conversation.</p><p>Tech companies are trying to keep <span class='dropzone' data-ans='up'></span> with rising demand.</p><p>Everyone is trying to play catch-<span class='dropzone' data-ans='up'></span>.</p><p>Google is working <span class='dropzone' data-ans='with'></span> Kairos Power.</p><p>Companies want to bring new reactors <span class='dropzone' data-ans='online'></span>.</p><p>SMRs could open <span class='dropzone' data-ans='up'></span> the conversation about nuclear.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">into</span><span class="draggable" draggable="true">up</span><span class="draggable" draggable="true">with</span><span class="draggable" draggable="true">online</span><span class="draggable" draggable="true">up</span><span class="draggable" draggable="true">off</span></div></div></div><div class='card'><h3>Phrasal Verb Exercise 2: Form Questions</h3><div class='dragArea'><div><p>Why has nuclear power come back <span class='dropzone' data-ans='into'></span> the conversation?</p><p>Can the energy grid keep <span class='dropzone' data-ans='up'></span> with AI data centers?</p><p>Why are companies playing catch-<span class='dropzone' data-ans='up'></span> on electricity supply?</p><p>Which energy companies should Big Tech work <span class='dropzone' data-ans='with'></span>?</p><p>How quickly can new reactors be brought <span class='dropzone' data-ans='online'></span>?</p><p>Could SMRs open <span class='dropzone' data-ans='up'></span> a broader discussion about nuclear energy?</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">into</span><span class="draggable" draggable="true">up</span><span class="draggable" draggable="true">with</span><span class="draggable" draggable="true">online</span><span class="draggable" draggable="true">up</span></div></div></div>
+<div class="card"><div class="prompt"><strong>Speaking extension:</strong> Choose three questions from Phrasal Verb Exercise 2 and discuss them with a partner.</div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div>
+</section>
+
+<section class="page" data-title="Grammar">
+<div class="card">
+<h2>B2/C1 Grammar: Future Predictions and Passive Reporting</h2>
+<p>This grammar section practises formal language for discussing future energy trends and reported investment plans.</p>
+<table class="table">
+<tr><th>Function</th><th>Pattern</th><th>Example</th></tr>
+<tr><td>Future prediction</td><td>could / is expected to + verb</td><td>Electricity demand could rise significantly by 2050.</td></tr>
+<tr><td>Reported plans</td><td>be working to / be planning to</td><td>Microsoft is working to reopen Three Mile Island.</td></tr>
+<tr><td>Passive reporting</td><td>be slated to + verb</td><td>SMRs are slated to open in 2030 and beyond.</td></tr>
+<tr><td>Purpose</td><td>in order to / so that</td><td>Tech companies need steady power so that AI can scale.</td></tr>
+</table>
+</div>
+<div class='card'><h3>Grammar Exercise 1: Drag the correct phrase</h3><div class='dragArea'><div><p>Global electricity demand <span class='dropzone' data-ans='could rise'></span> sharply by 2050.</p><p>Tech companies are <span class='dropzone' data-ans='working to'></span> secure clean power.</p><p>SMRs are <span class='dropzone' data-ans='slated to'></span> open in 2030 and beyond.</p><p>Nuclear power is needed so that data centers <span class='dropzone' data-ans='can run'></span> continuously.</p><p>Companies are investing in nuclear in order <span class='dropzone' data-ans='to meet'></span> future demand.</p></div><div class='dragBank'><h3>Options</h3><span class="draggable" draggable="true">could rise</span><span class="draggable" draggable="true">working to</span><span class="draggable" draggable="true">slated to</span><span class="draggable" draggable="true">can run</span><span class="draggable" draggable="true">to meet</span><span class="draggable" draggable="true">to meeting</span></div></div></div>
+<div class="card"><h3>Grammar Exercise 2: Error Correction</h3><p class="small">Click each sentence to reveal the correction.</p>
+<div class="reveal"><strong>Electricity demand could rises by 2050.</strong><div class="answer">Electricity demand could rise by 2050.</div></div><div class="reveal"><strong>Microsoft is working reopen Three Mile Island.</strong><div class="answer">Microsoft is working to reopen Three Mile Island.</div></div><div class="reveal"><strong>SMRs are slated opening in 2030 and beyond.</strong><div class="answer">SMRs are slated to open in 2030 and beyond.</div></div><div class="reveal"><strong>Tech companies need clean power so that AI scale.</strong><div class="answer">Tech companies need clean power so that AI can scale.</div></div>
+</div>
+<div class="card"><h3>Grammar Exercise 3: Sentence Transformations</h3>
+<div class="checkline"><strong>Use “could”.</strong><br>Electricity demand may increase sharply in the future.<input data-contains="could|increase" placeholder="Write your sentence here"><div class="result"></div></div>
+<div class="checkline"><strong>Use “is working to”.</strong><br>Microsoft wants to reopen Three Mile Island.<input data-contains="is working to|reopen" placeholder="Write your sentence here"><div class="result"></div></div>
+<div class="checkline"><strong>Use “are slated to”.</strong><br>SMRs are planned to open after 2030.<input data-contains="are slated to|open" placeholder="Write your sentence here"><div class="result"></div></div>
+<div class="checkline"><strong>Use “so that”.</strong><br>Companies need clean steady power. They want AI data centers to operate continuously.<input data-contains="so that|can" placeholder="Write your sentence here"><div class="result"></div></div>
+<button class="btn" onclick="checkOpenAnswers()">Check answers</button></div>
+<div class="card"><h3>Useful Patterns</h3><table class="table">
+<tr><th>Purpose</th><th>Useful language</th></tr>
+<tr><td>Predicting trends</td><td>Demand could rise... / The adoption of nuclear is expected to...</td></tr>
+<tr><td>Reporting plans</td><td>The company is working to... / The project is slated to...</td></tr>
+<tr><td>Explaining need</td><td>This is necessary in order to... / They need power so that...</td></tr>
+<tr><td>Adding caution</td><td>However, regulatory approval remains a challenge.</td></tr>
+</table></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+
+<section class="page" data-title="Discussion">
+<div class="card"><h2>Discussion</h2><ol>
+<li>Should AI companies be responsible for producing the electricity they use?</li>
+<li>Is nuclear power the best solution for AI data centers?</li>
+<li>Are renewable energy credits enough, or do companies need real clean power?</li>
+<li>What are the advantages and risks of SMRs?</li>
+<li>Should countries build more traditional nuclear reactors as well as SMRs?</li>
+<li>Can AI growth and climate goals realistically happen at the same time?</li>
+</ol></div>
+<div class="card"><h3>Useful Language for Discussion</h3><table class="table"><tr><th>Giving an opinion</th><th>Talking about energy</th><th>Balancing risks</th></tr>
+<tr><td>I’d argue that...<br>From my perspective...<br>The key issue is...</td><td>Power demand is rising because...<br>Baseload energy matters because...<br>Intermittent resources are limited when...</td><td>On the one hand... On the other hand...<br>The benefit is..., but the risk is...<br>Regulatory approval could...</td></tr></table></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+
+<section class="page" data-title="Role Play">
+<div class="card"><h2>Role Play: Big Tech Energy Strategy Meeting</h2>
+<div class="prompt"><strong>Situation:</strong> A major tech company is planning new AI data centers and must decide whether to invest in nuclear power.</div>
+<div class="role"><div class="person"><h3>Student A: Tech Executive</h3><p>Argue that nuclear power is necessary to scale AI because data centers need clean, steady 24/7 power.</p></div>
+<div class="person"><h3>Student B: Energy Policy Adviser</h3><p>Question the plan. Discuss cost, regulation, timelines, public trust and whether SMRs can deliver enough power.</p></div></div>
+<h3>Challenge</h3><p>Use at least three phrases from the grammar section.</p>
+<table class="table"><tr><th>Tech Executive language</th><th>Energy Adviser language</th></tr><tr><td>Demand could rise...<br>We are working to...<br>We need baseload power so that...</td><td>SMRs are slated to..., but...<br>Regulatory approval remains...<br>Commercial-scale reactors may...</td></tr></table>
+</div><div class="controls"><button onclick="prevPage()">Previous</button><span></span></div></section>
+
+<footer>ESL CONNECT • Interactive video lesson</footer></div><script>
+const pages=[...document.querySelectorAll('.page')],nav=document.getElementById('nav');
+pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=p.dataset.title;if(i==0)b.classList.add('active');b.onclick=()=>showPage(i);nav.appendChild(b)});
+function showPage(n){pages.forEach((p,i)=>{p.classList.toggle('active',i==n);nav.children[i].classList.toggle('active',i==n)});scrollTo({top:0,behavior:'smooth'})}
+function nextPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c<pages.length-1)showPage(c+1)}
+function prevPage(){let c=pages.findIndex(p=>p.classList.contains('active'));if(c>0)showPage(c-1)}
+document.querySelectorAll('.reveal').forEach(box=>box.addEventListener('click',()=>box.classList.toggle('open')));
+let draggedWord=null;
+document.addEventListener('dragstart',e=>{if(e.target.classList.contains('draggable'))draggedWord=e.target.textContent.trim()});
+document.addEventListener('dragover',e=>{if(e.target.classList.contains('dropzone'))e.preventDefault()});
+document.addEventListener('drop',e=>{if(e.target.classList.contains('dropzone')){e.preventDefault();e.target.textContent=draggedWord||'';e.target.classList.add('filled');let ok=e.target.textContent.trim()===e.target.dataset.ans;e.target.classList.toggle('correct',ok);e.target.classList.toggle('incorrect',!ok)}});
+function checkOpenAnswers(){document.querySelectorAll('.checkline').forEach(line=>{const input=line.querySelector('input');const result=line.querySelector('.result');const value=input.value.toLowerCase();const checks=input.dataset.contains.split('|');const ok=checks.every(part=>value.includes(part.toLowerCase()));if(ok){result.textContent='Good attempt. Check punctuation and style with your teacher.';result.className='result correctText'}else{result.textContent='Try again. Use the target phrase from the instruction.';result.className='result incorrectText'}})}
+showPage(0);
+</script></body></html>
