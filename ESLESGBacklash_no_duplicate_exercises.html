@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0109)https://englishconnecter-lgtm.github.io/B2_C1_video/esl_connect_video_esg_backlash_b2c1_prep5_contact_us.html -->
+<html lang="en"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>ESL CONNECT | ESG Backlash</title><style>
+:root{--blue:#0b2f5b;--blue2:#114f95;--yellow:#f4d547;--bg:#f4f7fb;--text:#1e2a38;--muted:#5f7085;--line:#d8e0ea;--good:#1b8f3d;--bad:#c43d34}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrapper{max-width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;gap:18px;align-items:center}.logo{width:84px;height:84px;background:#fff;color:var(--blue);border:3px solid #fff5b7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;line-height:1.05;text-decoration:none}header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;background:#eaf0f8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav button{border:none;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700}nav button.active,nav button:hover{background:var(--yellow);color:#18263a}
+.page{display:none;padding:24px}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}@media(max-width:900px){.grid,.dragArea,.role{grid-template-columns:1fr!important}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 3px 12px rgba(15,47,106,.06)}.card h2,.card h3{margin-top:0;color:var(--blue)}.note{background:#fffbe6;border-left:5px solid var(--yellow);padding:12px 14px;border-radius:8px}.small{color:var(--muted);font-size:14px}
+.heroImg,.videoImg{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.08)}.heroImg{height:330px;object-fit:cover}.video-thumb{text-decoration:none;color:inherit}.video-meta{padding:12px 0}.btn{display:inline-block;margin-top:10px;background:var(--blue2);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700}
+.exercise{border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}.question{margin-top:0}.choice{display:block;margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;background:#fff}.choice:hover{background:#f8fbff}.choice.correctChoice{background:#f0fdf4!important;border-color:#167a46!important;color:#14532d!important;font-weight:700}.choice.incorrectChoice{background:#fef2f2!important;border-color:#b91c1c!important;color:#7f1d1d!important;font-weight:700}.feedback{min-height:24px;font-weight:700;margin-top:8px}.exercise.correct .feedback{color:var(--good)}.exercise.incorrect .feedback{color:var(--bad)}
+.dragArea{display:grid;grid-template-columns:1fr 290px;gap:18px}.dropzone{display:inline-block;min-width:150px;min-height:34px;border:2px dashed #9bb4d6;border-radius:8px;background:#fff;padding:5px 10px}.dropzone.filled{border-style:solid;background:#eef6ff;font-weight:700}.dropzone.correct{border-color:#167a46;background:#f0fdf4}.dropzone.incorrect{border-color:#b91c1c;background:#fef2f2}.draggable{background:#e8f0fb;border:1px solid #c7d7ee;border-radius:999px;padding:8px 11px;font-weight:700;color:#0b2f5b;cursor:grab;display:inline-block;margin:5px}.dragBank{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:12px}
+.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.table th{background:#eef4fb}.role{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:16px}.prompt{background:#f0f7ff;border:1px solid #cce1ff;border-radius:10px;padding:14px;margin:12px 0}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.controls button{border:none;background:var(--blue2);color:#fff;padding:11px 16px;border-radius:8px;cursor:pointer}.controls button:hover{background:var(--yellow);color:#18263a}footer{padding:18px 24px 28px;color:var(--muted);text-align:center}
+
+
+/* Prep Part 1 / Prep Part 2 sentence-completion drag-and-drop */
+.matchSentence{
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #d8e1ef;
+  border-radius:10px;
+  background:#fff;
+  overflow:visible!important;
+}
+.matchSentence strong{color:#0b2f5b}
+.matchDrop{
+  display:block;
+  min-height:42px;
+  margin-top:8px;
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:9px 12px!important;
+  line-height:1.45!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-indent:0!important;
+  text-align:left!important;
+}
+.page .dragArea{grid-template-columns:minmax(0,1fr) 340px}
+.page .dragBank{box-sizing:border-box;padding:16px 18px!important;overflow:visible!important}
+.page .dragBank .draggable{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  margin:8px 0!important;
+  padding:12px 16px 13px 20px!important;
+  border-radius:10px!important;
+  line-height:1.45!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  text-indent:0!important;
+  text-align:left!important;
+  transform:none!important;
+}
+@media(max-width:900px){.page .dragArea{grid-template-columns:1fr!important}}
+footer a{color:inherit;text-decoration:none}
+
+
+/* Click-to-reveal comprehension questions */
+.reveal{
+  border:1px solid var(--line,#d8e1ef);
+  border-radius:12px;
+  padding:15px;
+  margin:14px 0;
+  background:#fff;
+  cursor:pointer;
+}
+.reveal:hover{background:#f8fbff}
+.reveal .answer{
+  display:none;
+  margin-top:10px;
+  padding:12px;
+  border-left:4px solid var(--yellow2,var(--yellow,#ffd84d));
+  background:#fffbe6;
+  border-radius:8px;
+}
+.reveal.open .answer{display:block}
+.reveal strong{color:var(--navy,var(--blue,#0b2f5b))}
+footer a{color:inherit;text-decoration:none}
+</style><script src="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/recordConsoleEvents.js"></script></head><body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1304.0"><div class="wrapper"><header><a class="logo" href="https://www.eslconnect.net/" target="_blank">ESL<br/>CONNECT</a><div><h1>ESG Investment and the Backlash</h1><p>B2/C1 video lesson on ESG, fiduciary duty, corporate sustainability and business controversy.</p><p class="small"><a href="https://www.youtube.com/watch?v=95jabRNJ6Ng" style="color:#fff2a8" target="_blank">Open video on YouTube</a></p></div></header><nav id="nav"><button class="active">Start</button><button>Prep Part 1</button><button>Watch Part 1</button><button>Comprehension 1</button><button>Prep Part 2</button><button>Watch Part 2</button><button>Comprehension 2</button><button>Vocabulary Review</button><button>Grammar</button><button>Thought-Provoking Questions</button><button>Role Play</button></nav>
+<section class="page active" data-title="Start">
+<div class="grid"><div class="card"><h2>Lesson Overview</h2>
+<p>Students watch a Financial Times video about ESG investment and the political, financial and ethical backlash against it.</p>
+<h3>Before you watch</h3><ol><li>What does ESG mean in business and investing?</li><li>Should companies focus only on profit?</li><li>Can sustainability and shareholder returns work together?</li></ol></div>
+<div class="card"><h2>ESG Investment Debate</h2><img alt="YouTube screen grab" class="heroImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/95jabRNJ6Ng/hqdefault.jpg';" src="./ESL CONNECT _ ESG Backlash_files/maxresdefault.jpg"/><p><a class="btn" href="https://www.youtube.com/watch?v=95jabRNJ6Ng" target="_blank">Open video on YouTube</a></p></div></div>
+<div class="controls"><span></span><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Prep Part 1"><div class="card"><h2>Prep Part 1</h2><p class="small">Drag the correct sentence ending into each gap.</p><div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If ESG is discussed,... <span class="dropzone matchDrop" data-ans="people are talking about environmental, social and governance issues."></span></div><div class="matchSentence"><strong>2.</strong> If there is a backlash,... <span class="dropzone matchDrop" data-ans="there is a strong negative reaction."></span></div><div class="matchSentence"><strong>3.</strong> If critics mention woke capitalism,... <span class="dropzone matchDrop" data-ans="they are criticising companies for focusing on social or political issues."></span></div><div class="matchSentence"><strong>4.</strong> If a movement gathers steam,... <span class="dropzone matchDrop" data-ans="it becomes stronger or more intense."></span></div><div class="matchSentence"><strong>5.</strong> If a company has fiduciary duty,... <span class="dropzone matchDrop" data-ans="it must act in clients’ or shareholders’ financial interests."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">there is a strong negative reaction.</span><span class="draggable" draggable="true">they are criticising companies for focusing on social or political issues.</span><span class="draggable" draggable="true">it becomes stronger or more intense.</span><span class="draggable" draggable="true">it must act in clients’ or shareholders’ financial interests.</span><span class="draggable" draggable="true">people are talking about environmental, social and governance issues.</span></div></div></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Watch Part 1"><div class="card"><h2>Watch Part 1</h2><p>Watch from the start to about 1:36. Focus on the anti-ESG backlash in US politics.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=95jabRNJ6Ng" target="_blank"><img alt="YouTube screen grab" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/95jabRNJ6Ng/hqdefault.jpg';" src="./ESL CONNECT _ ESG Backlash_files/maxresdefault.jpg"/><div class="video-meta"><strong>Part 1:</strong> ESG criticism, US politics, Disney, Texas and fiduciary duty.</div></a>
+<a class="btn" href="https://www.youtube.com/watch?v=95jabRNJ6Ng" target="_blank">Watch Part 1 on YouTube</a></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Comprehension 1"><div class="card"><h2>Comprehension 1</h2><p class="small instructions">Click each question to reveal the answer.</p><div class="reveal"><strong>What has happened to ESG investment in recent years?</strong><div class="answer">It has taken the financial and corporate world by storm.</div></div><div class="reveal"><strong>Where has the loudest criticism of ESG come from?</strong><div class="answer">America</div></div><div class="reveal"><strong>What did Tucker Carlson reportedly call ESG?</strong><div class="answer">destructive force</div></div><div class="reveal"><strong>What did Texas ban some government agencies from doing?</strong><div class="answer">dealing with firms accused of boycotting gun and fossil fuel industries</div></div></div><div class="card"><h3>Vocabulary from Part 1</h3><div class="dragArea"><div>
+<p>ESG investment has taken the corporate world by <span class="dropzone" data-ans="storm"></span>.</p>
+<p>An anti-ESG backlash has been gathering <span class="dropzone" data-ans="steam"></span>.</p>
+<p>Some critics say ESG puts pressure on <span class="dropzone" data-ans="governments"></span>.</p>
+<p>Companies may risk neglecting their fiduciary <span class="dropzone" data-ans="duty"></span>.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">duty</span><span class="draggable" draggable="true">storm</span><span class="draggable" draggable="true">maze</span><span class="draggable" draggable="true">governments</span><span class="draggable" draggable="true">steam</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Prep Part 2"><div class="card"><h2>Prep Part 2</h2><p class="small">Drag the correct sentence ending into each gap.</p><div class="dragArea"><div><div class="matchSentence"><strong>1.</strong> If a company has fiduciary duty,... <span class="dropzone matchDrop" data-ans="it has a responsibility to act in clients’ financial interests."></span></div><div class="matchSentence"><strong>2.</strong> If corporate action is voluntary,... <span class="dropzone matchDrop" data-ans="companies choose to act without being forced by law."></span></div><div class="matchSentence"><strong>3.</strong> If a term falls out of use,... <span class="dropzone matchDrop" data-ans="people stop using it commonly."></span></div><div class="matchSentence"><strong>4.</strong> If banks pull out of alliances,... <span class="dropzone matchDrop" data-ans="they leave or withdraw from those alliances."></span></div><div class="matchSentence"><strong>5.</strong> If sustainability challenges are urgent,... <span class="dropzone matchDrop" data-ans="they need serious attention very soon."></span></div></div><div class="dragBank"><h3>Sentence endings</h3><span class="draggable" draggable="true">they need serious attention very soon.</span><span class="draggable" draggable="true">companies choose to act without being forced by law.</span><span class="draggable" draggable="true">they leave or withdraw from those alliances.</span><span class="draggable" draggable="true">people stop using it commonly.</span><span class="draggable" draggable="true">it has a responsibility to act in clients’ financial interests.</span></div></div></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Watch Part 2"><div class="card"><h2>Watch Part 2</h2><p>Watch from about 1:36 to the end. Focus on banks, BlackRock, Elon Musk and the future of the term ESG.</p>
+<a class="video-thumb" href="https://www.youtube.com/watch?v=95jabRNJ6Ng&amp;t=96s" target="_blank"><img alt="YouTube screen grab" class="videoImg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/95jabRNJ6Ng/hqdefault.jpg';" src="./ESL CONNECT _ ESG Backlash_files/maxresdefault.jpg"/><div class="video-meta"><strong>Part 2:</strong> Banks, sustainable investing, ESG criticism and urgent sustainability challenges.</div></a>
+<a class="btn" href="https://www.youtube.com/watch?v=95jabRNJ6Ng&amp;t=96s" target="_blank">Watch Part 2 on YouTube</a></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Comprehension 2"><div class="card"><h2>Comprehension 2</h2><p class="small instructions">Click each question to reveal the answer.</p><div class="reveal"><strong>What have some US banks warned they may do?</strong><div class="answer">pull out of corporate alliances promising to cut carbon emissions</div></div><div class="reveal"><strong>Who is Tariq Fancy?</strong><div class="answer">the former head of sustainable investing at BlackRock</div></div><div class="reveal"><strong>What is his criticism of voluntary corporate action?</strong><div class="answer">It may exaggerate what companies can achieve and undermine stronger government measures.</div></div><div class="reveal"><strong>What is the video’s final key point?</strong><div class="answer">The challenges around sustainability in business will not disappear.</div></div></div><div class="card"><h3>Vocabulary from Part 2</h3><div class="dragArea"><div>
+<p>Some banks may pull out of corporate <span class="dropzone" data-ans="alliances"></span>.</p>
+<p>Critics say voluntary action can undermine serious government <span class="dropzone" data-ans="measures"></span>.</p>
+<p>ESG has become an intense <span class="dropzone" data-ans="controversy"></span>.</p>
+<p>Sustainability challenges are becoming more <span class="dropzone" data-ans="urgent"></span>.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">alliances</span><span class="draggable" draggable="true">scrapbook</span><span class="draggable" draggable="true">measures</span><span class="draggable" draggable="true">urgent</span><span class="draggable" draggable="true">controversy</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Vocabulary Review"><div class="card"><h2>Vocabulary Review</h2>
+<table class="table"><tbody><tr><th>Word / phrase</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>take something by storm</td><td>become suddenly very popular or influential</td><td>ESG investment has taken finance by storm.</td></tr>
+<tr><td>backlash</td><td>a strong negative reaction</td><td>There has been a backlash against ESG.</td></tr>
+<tr><td>gather steam</td><td>become stronger or more intense</td><td>The movement has been gathering steam.</td></tr>
+<tr><td>fiduciary duty</td><td>a responsibility to act in clients’ financial interests</td><td>Critics say companies must respect fiduciary duty.</td></tr>
+<tr><td>pull out of</td><td>leave or withdraw from something</td><td>Some banks may pull out of climate alliances.</td></tr>
+<tr><td>fall out of use</td><td>stop being commonly used</td><td>The term ESG may fall out of use.</td></tr></tbody></table></div>
+<div class="card"><h3>Phrasal Verbs and Expressions</h3><div class="dragArea"><div>
+<p>ESG has taken finance by <span class="dropzone" data-ans="storm"></span>.</p>
+<p>The backlash is gathering <span class="dropzone" data-ans="steam"></span>.</p>
+<p>Some banks may pull <span class="dropzone" data-ans="out of"></span> alliances.</p>
+<p>Companies are cutting <span class="dropzone" data-ans="off"></span> official business with some firms.</p>
+<p>The term ESG could fall <span class="dropzone" data-ans="out of"></span> use.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">storm</span><span class="draggable" draggable="true">back</span><span class="draggable" draggable="true">steam</span><span class="draggable" draggable="true">out of</span><span class="draggable" draggable="true">off</span><span class="draggable" draggable="true">out of</span></div></div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Grammar"><div class="card"><h2>B2/C1 Grammar: Reported Speech for Business Controversies</h2>
+<p>This section practises reporting criticism, claims and predictions in business news.</p>
+<div class="exercise mcq" data-answer="C">
+<p class="question"><strong>Direct speech: “ESG is a destructive force.” Reported speech:</strong></p>
+<div class="choices"><label class="choice"><input name="g1" type="radio" value="A"/> <span>He asked ESG is a destructive force.</span></label><label class="choice"><input name="g1" type="radio" value="B"/> <span>He said ESG will destructive force.</span></label><label class="choice"><input name="g1" type="radio" value="C"/> <span>He said that ESG was a destructive force.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+<div class="exercise mcq" data-answer="B">
+<p class="question"><strong>Direct speech: “The term could fall out of use.” Reported speech:</strong></p>
+<div class="choices"><label class="choice"><input name="g2" type="radio" value="A"/> <span>Some people asked the term could fall out of use.</span></label><label class="choice"><input name="g2" type="radio" value="B"/> <span>Some people predicted that the term could fall out of use.</span></label><label class="choice"><input name="g2" type="radio" value="C"/> <span>Some people predicted the term falls yesterday.</span></label></div>
+<div aria-live="polite" class="feedback"></div>
+</div>
+</div><div class="card"><h3>Reported Speech in Context</h3><div class="dragArea"><div>
+<p>The video said that ESG investment <span class="dropzone" data-ans="had taken"></span> the corporate world by storm.</p>
+<p>Critics argued that companies <span class="dropzone" data-ans="risked neglecting"></span> their fiduciary duty.</p>
+<p>Some banks warned that they <span class="dropzone" data-ans="might pull out"></span> of corporate alliances.</p>
+<p>The speaker said that sustainability challenges <span class="dropzone" data-ans="were becoming"></span> more urgent.</p></div><div class="dragBank"><h3>Options</h3><span class="draggable" draggable="true">will become</span><span class="draggable" draggable="true">had taken</span><span class="draggable" draggable="true">were becoming</span><span class="draggable" draggable="true">might pull out</span><span class="draggable" draggable="true">risked neglecting</span></div></div></div>
+<div class="card"><h3>Useful Patterns</h3><table class="table"><tbody><tr><th>Direct speech</th><th>Reported speech</th></tr>
+<tr><td>“Companies are focusing too heavily on ESG.”</td><td>Critics argued that companies were focusing too heavily on ESG.</td></tr>
+<tr><td>“Banks may pull out.”</td><td>The report said that banks might pull out.</td></tr>
+<tr><td>“The challenges will not disappear.”</td><td>The speaker said that the challenges would not disappear.</td></tr></tbody></table><div class="prompt"><strong>Task:</strong> Summarise the ESG debate using four reported-speech sentences: one from critics, one from banks, one from Tariq Fancy and one from the video narrator.</div></div>
+<div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Thought-Provoking Questions"><div class="card"><h2>Thought-Provoking Questions</h2><ol>
+<li>Should investment firms consider environmental and social issues?</li><li>Does ESG distract companies from maximising returns?</li><li>Can voluntary corporate action solve sustainability problems?</li><li>Why has ESG become politically controversial?</li><li>Should governments, not companies, lead climate policy?</li><li>Could the term ESG disappear while the issues remain?</li></ol></div><div class="controls"><button onclick="prevPage()">Previous</button><button onclick="nextPage()">Next</button></div></section>
+<section class="page" data-title="Role Play"><div class="card"><h2>Role Play</h2><div class="prompt"><strong>Situation:</strong> An investment company is deciding whether to keep using ESG language in its client communications.</div><div class="role"><div class="person"><h3>Student A: ESG investment manager</h3><p>Defend ESG. Explain why sustainability risks matter for long-term business performance.</p></div><div class="person"><h3>Student B: Client / board member</h3><p>Challenge ESG. Ask about fiduciary duty, returns, politics and whether the term should be dropped.</p></div></div><h3>Useful language</h3><table class="table"><tbody><tr><th>Defending ESG</th><th>Questioning ESG</th></tr><tr><td>Long-term risks include...<br/>Our duty is to consider...<br/>Sustainability affects...</td><td>How does this maximise returns?<br/>Is this political?<br/>What evidence supports that?</td></tr></tbody></table></div><div class="controls"><button onclick="prevPage()">Previous</button><span></span></div></section>
+<footer>ESL CONNECT • Interactive lesson • <a href="mailto:englishconnecter@gmail.com" style="color:inherit;text-decoration:none;">Contact US</a></footer></div><script>
+const pages=[...document.querySelectorAll('.page')];
+const nav=document.getElementById('nav');
+const navButtons=[...nav.querySelectorAll('button')];
+
+navButtons.forEach((btn,i)=>{
+  btn.onclick=()=>showPage(i);
+});
+
+function showPage(index){
+  pages.forEach((page,i)=>{
+    page.classList.toggle('active',i===index);
+    if(navButtons[i]) navButtons[i].classList.toggle('active',i===index);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function nextPage(){
+  const c=pages.findIndex(p=>p.classList.contains('active'));
+  if(c<pages.length-1)showPage(c+1);
+}
+
+function prevPage(){
+  const c=pages.findIndex(p=>p.classList.contains('active'));
+  if(c>0)showPage(c-1);
+}
+
+document.querySelectorAll('.mcq').forEach(box=>{
+  const answer=box.dataset.answer;
+  const fb=box.querySelector('.feedback');
+  box.querySelectorAll('input[type=radio]').forEach(input=>{
+    input.addEventListener('change',()=>{
+      box.querySelectorAll('.choice').forEach(label=>label.classList.remove('correctChoice','incorrectChoice'));
+      const selected=input.closest('.choice');
+      if(input.value===answer){
+        box.classList.add('correct');
+        box.classList.remove('incorrect');
+        selected.classList.add('correctChoice');
+        if(fb) fb.textContent='Correct';
+      }else{
+        box.classList.add('incorrect');
+        box.classList.remove('correct');
+        selected.classList.add('incorrectChoice');
+        if(fb) fb.textContent='Try again';
+      }
+    });
+  });
+});
+
+let draggedWord=null;
+document.addEventListener('dragstart',e=>{
+  if(e.target.classList.contains('draggable'))draggedWord=e.target.textContent.trim();
+});
+document.addEventListener('dragover',e=>{
+  if(e.target.classList.contains('dropzone'))e.preventDefault();
+});
+document.addEventListener('drop',e=>{
+  if(e.target.classList.contains('dropzone')){
+    e.preventDefault();
+    e.target.textContent=draggedWord||'';
+    e.target.classList.add('filled');
+    let ok=e.target.textContent.trim()===e.target.dataset.ans;
+    e.target.classList.toggle('correct',ok);
+    e.target.classList.toggle('incorrect',!ok);
+  }
+});
+
+document.addEventListener('click',function(e){
+  const r=e.target.closest('.reveal');
+  if(r){r.classList.toggle('open');}
+});
+
+showPage(0);
+</script></body><grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" class="grammarly-desktop-integration" data-content='{"mode":"full","isActive":true,"isUserDisabled":false}' role="group" tabindex="-1"></div></template></grammarly-desktop-integration></html>
